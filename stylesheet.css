@@ -180,7 +180,7 @@ body {
 
 	overflow-y: hidden;
 	overflow-x: hidden;
-	
+
 	font-family: 'Roboto Slab', Georgia, serif;
 	font-size: 8vw;
 	line-height: 70%;
@@ -242,4 +242,56 @@ body {
 .playing-symbol {
 	background-color: black;
 	color: white;
+}
+
+
+
+
+/* WTF */
+#wtf-info-container {
+	position: absolute;
+	top: 0;
+	width: 100vh;
+	height: 100vh;
+	background-color: white;
+	margin-left: 20.5%;
+	z-index: 100;
+	line-height:0px;
+	font-size:1px;
+}
+
+#wtf-info-container div {
+	display: inline-flex;
+	display: -webkit-inline-flex;
+	display: -moz-inline-flex;
+	justify-content: center; /* align horizontal */
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	align-items: center; /* align vertical */
+	-webkit-align-items: center;
+	-moz-align-items: center;
+
+	width: 45.98vh;
+	height: 46.05vh;
+	font-family: 'xprsn-menlo';
+	color: white;
+	font-size: 11px;
+	line-height: normal;
+	border: 0;
+	padding: 2vh;
+	margin: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	vertical-align: top;
+}
+
+#wtf-info-container div a {
+	font-family: 'xprsn-menlo';
+	color: white;
+	font-size: 11px;
+	line-height: normal;
+	z-index: 100;
+	border: 0;
+	padding: 2vh;
+	margin: 0;
 }

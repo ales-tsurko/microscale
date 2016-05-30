@@ -111,6 +111,10 @@
       </div>
 
       <div id="bottom-container">
+         <div style="display:inline-block;position:absolute;width:100%;bottom:7%;text-align:right;font-size:10px;z-index:50">
+            <span id="wtf-open-button" style="margin-right:1%;color:white;background-color:#F20026;cursor: pointer">&nbspwtf?&nbsp</span>
+            <a href="http://alestsurko.by" target="_blank"><span style="margin-right:1%;color:white;background-color:black;">&nbsp&copy 2016 Aliaksandr Tsurko&nbsp</span></a>
+         </div>
          <div id="map-container">
             <ul>
                <br>
@@ -130,5 +134,55 @@
          </div>
       </div>
    </div>
+
+   <div id="wtf-container" style="display:none">
+      <div id="wtf-close-button" style="display:block; position:absolute; margin-left:2%; font-family:'Roboto Slab',Georgia,serif; font-size:16px; top:2%; cursor:pointer">[X] close</div>
+      <div id="wtf-info-container">
+         <div style="background-color:#3CDE00">
+            microscale is an interactive album and instrument made by Ales Tsurko.
+            microscale uses text and regular expressions to generate music.
+            <br><br>
+            Independent parts of a structure forms not only new meaning,
+            but another form of existence and at the same time it's all
+            forming in the brain as a concept. It's showing that for the concept
+            there is no any materials, as well as for the art there is no
+            difference how it was created, and the only important is what an
+            artwork brings out in the brain.
+         </div>
+         <div style="background-color:black"></div>
+         <div></div>
+         <div style="background-color:#F800B4">
+            First of all it's a musical piece that you can just listen. The
+            music which borns right in front of you. But it's also open for
+            interpretation, so bellow is instructions for those, who wants to
+            create his own version (or to perform microscale live).
+            <br><br>
+            microscale uses regular expressions to find matchings in the text
+            buffers. If you don't familiar with regular expressions, here is a
+            short course: http://regexone.com.
+            <br><br>
+            You can choose track by clicking on a track number on top of the text
+            buffers area. There is a sample map for each track (the bottom-right
+            area). The map is a table of relationships between matchings and
+            samples. When the playing cursor achieves the match from the map,
+            microscale plays appropriate sample. You can use your own text in the
+            buffers and your own regular expressions. Fill free to play.
+         </div>
+      </div>
+   </div>
+
+
+   <!-- show/hide wtf? view -->
+   <script type="text/javascript">
+   $("#wtf-open-button").click(function() {
+      $("#wtf-container").fadeToggle(1000);
+      $("#main-container").fadeToggle(1000);
+   })
+
+   $("#wtf-close-button").click(function() {
+      $("#wtf-container").fadeToggle(1000);
+      $("#main-container").fadeToggle(1000);
+   })
+   </script>
 </body>
 </html>
