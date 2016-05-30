@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8"/>
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+   <!-- <meta name="description" content="" /> -->
+
+   <meta property="og:title" content="microscale" />
+   <meta property="og:url" content="http://alestsurko.by/microscale" />
+
+   <title>microscale</title>
+   <link rel="shortcut icon" href="img/favicon.ico" />
+   <!-- Google fonts -->
+   <!-- Roboto slab -->
+   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&subset=latin,greek-ext,vietnamese,cyrillic-ext,latin-ext,cyrillic,greek' rel='stylesheet' type='text/css'>
+
+   <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+   <script type="text/javascript" src="//cdn.tonejs.org/latest/Tone.min.js"></script>
+   <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+   <!-- <script type="text/javascript" src="scripts/flocking-all.min.js"></script> -->
+   <script type="text/javascript" src="scripts/engine.js"></script>
+</head>
+<body>
+   <script type="text/javascript"></script>
+   <div id="main-container">
+      <div id="input-container">
+         <input id="expression-input" type="text" name="name" value="ro|[a-z]+or|la|[A-Za-z]+m" spellcheck="false">
+      </div>
+      <div id="transport-container">
+         <div id="transport-buttons-container">
+            <img src="img/play-button.svg" id="play-button" class="play-pause-button top-button" />
+            <img src="img/pause-button.svg" id="pause-button" style="display: none" class="play-pause-button top-button" />
+            <img src="img/rewind-button.svg" id="rewind-button" class="top-button" />
+            <img src="img/rewind-button-mousedown.svg" id="rewind-button-mousedown" class="top-button" />
+         </div>
+         <div id="tracklist-container">
+            <ul id="tracklist">
+               <li class="current-track">1</li>
+               <li>2</li>
+               <li>3</li>
+               <li>4</li>
+            </ul>
+         </div>
+      </div>
+
+      <div id="middle-container">
+         <div id="buffer-1" class="text-buffer" contenteditable="true" spellcheck="false">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+         </div>
+
+         <div id="buffer-2" class="text-buffer" contenteditable="true" spellcheck="false">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+         </div>
+         <div id="buffer-3" class="text-buffer" contenteditable="true" spellcheck="false">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+         </div>
+         <div id="buffer-4" class="text-buffer" contenteditable="true" spellcheck="false">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+         </div>
+         <div id="buffer-5" class="text-buffer" contenteditable="true" spellcheck="false">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+         </div>
+         <div id="buffer-6" class="text-buffer" contenteditable="true" spellcheck="false">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+         </div>
+      </div>
+      <div id="middle-overlay-container">
+         <div id="buffer-overlay-1" class="buffer-overlay"><span></span></div>
+         <div id="buffer-overlay-2" class="buffer-overlay"><span></span></div>
+         <div id="buffer-overlay-3" class="buffer-overlay"><span></span></div>
+         <div id="buffer-overlay-4" class="buffer-overlay"><span></span></div>
+         <div id="buffer-overlay-5" class="buffer-overlay"><span></span></div>
+         <div id="buffer-overlay-6" class="buffer-overlay"><span></span></div>
+      </div>
+
+      <div id="bottom-container">
+         <div id="map-container">
+            <ul>
+               <br>
+               <li>a - unt.mp3/.ogg</li>
+               <li>b - asd.mp3/.ogg</li>
+               <li>c - tr.mp3/.ogg</li>
+               <li>e - tre.mp3/.ogg</li>
+               <li>f - unt.mp3/.ogg</li>
+               <li>g - asd.mp3/.ogg</li>
+               <li>h - trrer.mp3/.ogg</li>
+               <li>i - tre.mp3/.ogg</li>
+               <li>j - unte.mp3/.ogg</li>
+               <li>k - asdtetr.mp3/.ogg</li>
+               <li>l - trq.mp3/.ogg</li>
+               <li>m - trew.mp3/.ogg</li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</body>
+</html>
