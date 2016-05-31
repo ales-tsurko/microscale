@@ -154,7 +154,7 @@ body {
 }
 
 .buffer-overlay {
-	/*z-index: -50;*/
+	z-index: -50;
 	position: absolute;
 	display: inline-flex;
 	display: -webkit-inline-flex;
