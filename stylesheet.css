@@ -239,11 +239,14 @@ body {
 /* WTF */
 #wtf-info-container {
 	position: absolute;
+	width: 599px;
+	height: 599px;
+	left: 0;
+	right: 0;
 	top: 0;
-	width: 100vh;
-	height: 100vh;
+	bottom: 0;
+	margin: auto;
 	background-color: white;
-	margin-left: 20.5%;
 	z-index: 100;
 	line-height:0px;
 	font-size:1px;
@@ -260,14 +263,18 @@ body {
 	-webkit-align-items: center;
 	-moz-align-items: center;
 
-	width: 45.98vh;
-	height: 46.05vh;
+	/*border-radius: 100%;*/
+	width: 258px;
+	height: 258px;
 	font-family: 'xprsn-menlo';
 	color: white;
 	font-size: 11px;
 	line-height: normal;
-	border: 0;
-	padding: 2vh;
+	border-style: solid;
+	border-color: black;
+	border-width: 20px;
+	margin: 20px;
+	/*padding: 10px;*/
 	margin: 0;
 	overflow-y: auto;
 	overflow-x: hidden;
