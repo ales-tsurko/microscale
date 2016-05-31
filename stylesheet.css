@@ -263,7 +263,6 @@ body {
 	-webkit-align-items: center;
 	-moz-align-items: center;
 
-	/*border-radius: 100%;*/
 	width: 258px;
 	height: 258px;
 	font-family: 'xprsn-menlo';
@@ -274,20 +273,19 @@ body {
 	border-color: black;
 	border-width: 20px;
 	margin: 20px;
-	/*padding: 10px;*/
 	margin: 0;
 	overflow-y: auto;
 	overflow-x: hidden;
 	vertical-align: top;
 }
 
-#wtf-info-container div a {
+#wtf-info-container a {
 	font-family: 'xprsn-menlo';
 	color: white;
 	font-size: 11px;
 	line-height: normal;
-	z-index: 100;
-	border: 0;
-	padding: 2vh;
-	margin: 0;
+}
+
+#wtf-info-container a:hover {
+	text-decoration: none;
 }
