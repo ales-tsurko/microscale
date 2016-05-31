@@ -38,7 +38,8 @@ body {
 	display: block;
 	width: 94vw;
 	margin: 0 auto; /* align center */
-	height: 160px;
+	/*height: 160px;*/
+	height: 24.5vh;
 	font-family: 'Roboto Slab', Georgia, serif;
 	font-size: 65px;
 	border: 0;
@@ -55,7 +56,7 @@ body {
 	position: relative;
 	margin-left: 18%;
 	width: 64%;
-	height: 75px;
+	height: 6.5vh;
 }
 
 /*TRANPSORT*/
@@ -65,10 +66,10 @@ body {
 }
 
 .top-button {
-	position: relative;
+	position: absolute;
 	width: 37px;
 	height: 37px;
-	top: 34px;
+	bottom: 0;
 	border: 0;
 	cursor: pointer;
 	margin: 0;
@@ -80,13 +81,13 @@ body {
 }
 
 #rewind-button {
-	margin-left: 5%;
+	margin-left: 42px;
 	float: left;
 }
 
 #rewind-button-mousedown {
 	display: none;
-	margin-left: 5%;
+	margin-left: 42px;
 	float: left;
 }
 
@@ -94,7 +95,7 @@ body {
 
 #tracklist-container {
 	position: absolute;
-	top: 40px;
+	bottom: 0;
 	font-family: 'xprsn-menlo';
 }
 
