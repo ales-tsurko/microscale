@@ -39,7 +39,7 @@ body {
 	width: 94vw;
 	margin: 0 auto; /* align center */
 	/*height: 160px;*/
-	height: 24.5vh;
+	height: 23vh;
 	font-family: 'Roboto Slab', Georgia, serif;
 	font-size: 65px;
 	border: 0;
@@ -56,7 +56,7 @@ body {
 	position: relative;
 	margin-left: 18%;
 	width: 64%;
-	height: 6.5vh;
+	height: 6vh;
 }
 
 /*TRANPSORT*/
