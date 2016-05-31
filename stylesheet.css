@@ -36,8 +36,8 @@ body {
 #expression-input {
 	position: relative;
 	display: block;
-	width: 95%;
-	margin-left: 2.5%;
+	width: 94vw;
+	margin: 0 auto; /* align center */
 	height: 160px;
 	font-family: 'Roboto Slab', Georgia, serif;
 	font-size: 65px;
@@ -53,31 +53,26 @@ body {
 #transport-container {
 	display: block;
 	position: relative;
-	width: 100%;
+	margin-left: 18%;
+	width: 64%;
 	height: 75px;
 }
 
 /*TRANPSORT*/
 #transport-buttons-container {
-	position: absolute;
-	display: inline-block;
-	margin-left: 73.5%;
+	float: right;
 	width: 85px;
-	height: 75px;
 }
 
 .top-button {
 	position: relative;
 	width: 37px;
 	height: 37px;
-	top: 80%;
+	top: 34px;
 	border: 0;
 	cursor: pointer;
 	margin: 0;
 	padding: 0;
-	-webkit-transform: translateY(-80%);
-	-ms-transform: translateY(-80%);
-	transform: translateY(-80%);
 }
 
 .play-pause-button {
@@ -99,16 +94,12 @@ body {
 
 #tracklist-container {
 	position: absolute;
-	width: 50%;
-	left: 20%;
 	top: 40px;
-	height: 128px;
 	font-family: 'xprsn-menlo';
 }
 
 #tracklist-container ul {
 	width: 100%;
-	height: 128px;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -134,23 +125,18 @@ body {
 
 /*MIDDLE CONTAINER*/
 #middle-container, #middle-overlay-container {
-	position: absolute;
-	top: 234px;
-	bottom: 199px;
+	display: block;
+	position: relative;
 	margin-left: 18%;
 	width: 64%;
 	line-height:0px;
 	font-size:1px;
 }
 
-#middle-overlay-container {
-	z-index: -50;
-}
-
 .text-buffer, .buffer-overlay {
 	display: inline-block;
 	width: 27.5%;
-	height: 40%;
+	height: 16vh;
 	font-family: 'xprsn-menlo';
 	color: #555555;
 	font-size: 11px;
@@ -168,6 +154,8 @@ body {
 }
 
 .buffer-overlay {
+	/*z-index: -50;*/
+	position: absolute;
 	display: inline-flex;
 	display: -webkit-inline-flex;
 	display: -moz-inline-flex;
@@ -184,7 +172,7 @@ body {
 	font-family: 'Roboto Slab', Georgia, serif;
 	font-size: 8vw;
 	line-height: 70%;
-	opacity: 0;
+	opacity: 0.8;
 }
 
 .buffer-overlay span {
