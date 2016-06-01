@@ -202,6 +202,7 @@ $(function() {
 
 		// here showing loading indicator
 		$("#load-indic-buf-"+(buffNum+1)).show();
+		$("#load-indic-div-"+(buffNum+1)).css("z-index", 150);
 
 		$.ajaxSetup({
 			scriptCharset: "utf-8", //or "ISO-8859-1"
@@ -220,11 +221,12 @@ $(function() {
 				if (buffers[buffNum].position > buffers[buffNum].size) {
 					buffers[buffNum].position = 0;
 				}
-				
+
 				buffers[buffNum].content = $(bufferID).text();
 
 				// here hidding loading indicator
 				$("#load-indic-buf-"+(buffNum+1)).hide();
+				$("#load-indic-div-"+(buffNum+1)).css("z-index", -150);
 			});
 
 			//If the expected response is JSON
