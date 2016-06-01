@@ -14,8 +14,6 @@ FIXME:
 заметно, но можно и сделать. Можно, например, во 2-ой версии.
 
 TODO:
-можно делать твеорческую часть, порядок действий:
-- определить тексты для буферов каждого трека;
 - составить карту сэмплов - определить каким буквам/слогам/словам какие
 сэмплы будут соответствовать;
 - сделать сэмплы;
@@ -202,12 +200,36 @@ $(function() {
 	function updateBuffer(bufferID) {
 		var buffNum = parseInt(bufferID.slice(-1)) - 1;
 
-		buffers[buffNum].size = $(bufferID).text().length;
-		if (buffers[buffNum].position > buffers[buffNum].size) {
-			buffers[buffNum].position = 0;
-		}
+		// here showing loading indicator
+		$("#load-indic-buf-"+(buffNum+1)).show();
 
-		buffers[buffNum].content = $(bufferID).text();
+		$.ajaxSetup({
+			scriptCharset: "utf-8", //or "ISO-8859-1"
+			contentType: "application/json; charset=utf-8"
+		});
+
+		$.getJSON('http://whateverorigin.org/get?url=' +
+		encodeURIComponent('https://en.wikipedia.org/wiki/Special:Random') + '&callback=?',
+		function (data) {
+			// data editing here
+
+			//If the expected response is text/plain
+			$(bufferID).html(data.contents).promise().done(function() {
+
+				buffers[buffNum].size = $(bufferID).text().length;
+				if (buffers[buffNum].position > buffers[buffNum].size) {
+					buffers[buffNum].position = 0;
+				}
+				
+				buffers[buffNum].content = $(bufferID).text();
+
+				// here hidding loading indicator
+				$("#load-indic-buf-"+(buffNum+1)).hide();
+			});
+
+			//If the expected response is JSON
+			//var response = $.parseJSON(data.contents);
+		});
 	}
 
 	// Tracklist
@@ -216,15 +238,27 @@ $(function() {
 		switch (track) {
 			case "1":
 			Tone.Transport.bpm = 120;
+			buffers.forEach(function(buf) {
+				updateBuffer(buf.id);
+			});
 			break;
 
 			case "2":
+			buffers.forEach(function(buf) {
+				updateBuffer(buf.id);
+			});
 			break;
 
 			case "3":
+			buffers.forEach(function(buf) {
+				updateBuffer(buf.id);
+			});
 			break;
 
 			case "4":
+			buffers.forEach(function(buf) {
+				updateBuffer(buf.id);
+			});
 			break;
 
 			default:
@@ -266,26 +300,26 @@ $(function() {
 	});
 
 	// Text buffer
-	$(".text-buffer").keyup(function() {
-		updateBuffer("#"+$(this).attr("id"));
-	});
-
-	$(".text-buffer").focusin(function() {
-		var buffNum = parseInt($(this).attr("id").slice(-1)) - 1;
-		buffers[buffNum].focus = true;
-		$(buffers[buffNum].overlayID).stop().fadeTo(200, 0);
-		$(buffers[buffNum].id).stop().fadeTo(200, 1);
-		$(this).html($(this).text());
-	});
-
-	$(".text-buffer").focusout(function() {
-		var buffNum = parseInt($(this).attr("id").slice(-1)) - 1;
-		buffers[buffNum].focus = false;
-		if (buffers[buffNum].content === "") {
-			buffers[buffNum].content = " ";
-		}
-		updateExpression($("#expression-input").val());
-	});
+	// $(".text-buffer").keyup(function() {
+	// 	updateBuffer("#"+$(this).attr("id"));
+	// });
+	//
+	// $(".text-buffer").focusin(function() {
+	// 	var buffNum = parseInt($(this).attr("id").slice(-1)) - 1;
+	// 	buffers[buffNum].focus = true;
+	// 	$(buffers[buffNum].overlayID).stop().fadeTo(200, 0);
+	// 	$(buffers[buffNum].id).stop().fadeTo(200, 1);
+	// 	$(this).html($(this).text());
+	// });
+	//
+	// $(".text-buffer").focusout(function() {
+	// 	var buffNum = parseInt($(this).attr("id").slice(-1)) - 1;
+	// 	buffers[buffNum].focus = false;
+	// 	if (buffers[buffNum].content === "") {
+	// 		buffers[buffNum].content = " ";
+	// 	}
+	// 	updateExpression($("#expression-input").val());
+	// });
 
 	// Tracklist
 	$("#tracklist").children("li").click(function() {

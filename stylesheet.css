@@ -173,11 +173,35 @@ body {
 	font-family: 'Roboto Slab', Georgia, serif;
 	font-size: 8vw;
 	line-height: 70%;
-	opacity: 0.8;
+	opacity: 0;
 }
 
 .buffer-overlay span {
 	margin-bottom: 5%;
+}
+
+.loading-indicator {
+	position: absolute;
+	display: inline-block;
+	width: 27.5%;
+	height: 16vh;
+	border: 0;
+	margin: 2.7%;
+	padding: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	text-align: center;
+}
+
+.loading-indicator span {
+	display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.loading-indicator img {
+	display: inline-block;
+	vertical-align: middle;
 }
 
 /*BOTTOM CONTAINER*/
