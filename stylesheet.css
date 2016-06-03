@@ -35,8 +35,8 @@ body {
 
 #expression-input {
 	position: relative;
-	display: block;
-	width: 94vw;
+	display: inline-block;
+	width: 90%;
 	margin: 0 auto; /* align center */
 	/*height: 160px;*/
 	height: 23vh;
