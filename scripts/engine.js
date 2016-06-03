@@ -10,6 +10,9 @@ FIXME:
 когда страница загружается в первый раз, при нажатии на play ничего не происходит.
 После обновления страницы проблема решается...
 
+сейчас для того, чтобы появились индексы совпадений, нужно нажать enter в поле
+выражения, а нужно, чтобы работало сразу при открытии страницы.
+
 у хайлайта margin-bottom должен меняться с размером шрифта, это не так сильно
 заметно, но можно и сделать. Можно, например, во 2-ой версии.
 
@@ -212,10 +215,14 @@ $(function() {
 		$.getJSON('http://whateverorigin.org/get?url=' +
 		encodeURIComponent('https://en.wikipedia.org/wiki/Special:Random') + '&callback=?',
 		function (data) {
-			// data editing here
-
+			// data editing
+			var str = "";
+			$(data.contents).find("#mw-content-text p").each(function() {
+				str += "<p>"+$(this).text()+"</p>";
+			});
+			
 			//If the expected response is text/plain
-			$(bufferID).html(data.contents).promise().done(function() {
+			$(bufferID).html(str).promise().done(function() {
 
 				buffers[buffNum].size = $(bufferID).text().length;
 				if (buffers[buffNum].position > buffers[buffNum].size) {
