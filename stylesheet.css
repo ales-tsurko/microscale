@@ -37,12 +37,12 @@ body {
 	position: relative;
 	display: inline-block;
 	width: 90%;
-	margin: 0 auto; /* align center */
-	/*height: 160px;*/
 	height: 23vh;
 	font-family: 'Roboto Slab', Georgia, serif;
 	font-size: 65px;
 	border: 0;
+	margin: 0;
+	padding: 0;
 	-webkit-appearance: none;
 }
 

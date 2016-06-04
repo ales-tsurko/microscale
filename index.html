@@ -24,8 +24,9 @@
 <body>
    <script type="text/javascript"></script>
    <div id="main-container">
-      <div id="input-container" style="display:block;width: 90%; margin:auto;vertical-align:top">
-         <span style="font-family: 'Roboto Slab', Georgia, serif;font-size: 65px; color: #F800B4">&gt;&nbsp;</span><input id="expression-input" type="text" name="name" value="ro|[a-z]+or|la|[A-Za-z]+m" spellcheck="false">
+      <div id="input-container" style="display:block;width: 98%; margin:auto;vertical-align:top">
+         <div style="display:inline-block;font-family: 'Roboto Slab', Georgia, serif;border:0;margin:0;padding:0;font-size: 65px; color: #F800B4;width:5%">&gt;</div>
+         <input id="expression-input" type="text" name="name" value="ro|[a-z]+or|la|[A-Za-z]+m" spellcheck="false">
       </div>
       <div id="transport-container">
          <div id="transport-buttons-container">
@@ -97,12 +98,15 @@
       </div>
    </div>
 
+
+   <!-- wtf? view -->
    <div id="wtf-container" style="display:none">
-      <div id="wtf-close-button" style="display:block; position:absolute; margin-left:2%; font-family:'Roboto Slab',Georgia,serif; font-size:16px; top:2%; cursor:pointer">[X] close</div>
+      <div id="wtf-close-button" style="display:block; position:absolute; margin-left:1%; font-size:40px; top:0.5%; cursor:pointer;">&times;</div>
       <div id="wtf-info-container">
          <div style="background-color:#3CDE00;border-color:#3CDE00">
             microscale is an interactive album and instrument made by Ales Tsurko.
-            microscale uses text and regular expressions to generate music.
+            microscale uses random texts from Wikipedia and regular expressions
+            to generate music.
             <br><br>
             Independent parts of a structure forms not only new meaning,
             but another form of existence and at the same time it's all
@@ -120,7 +124,8 @@
             create his own version (or to perform microscale live).
             <br><br>
             microscale uses regular expressions to find matchings in the text
-            buffers. If you don't familiar with regular expressions,
+            buffers, which are randomly chosen articles from Wikipedia.
+            If you don't familiar with regular expressions,
             <a href="http://regexone.com" target="_blank">here</a> is a
             short course.
             <br><br>
@@ -128,8 +133,8 @@
             buffers area. There is a sample map for each track (the bottom-right
             area). The map is a table of relationships between matchings and
             samples. When the playing cursor achieves the match from the map,
-            microscale plays appropriate sample. You can use your own text in the
-            buffers and your own regular expressions. Fill free to play.
+            microscale plays appropriate sample. You can enter your own
+            expression in the field. Fill free to play.
          </div>
       </div>
    </div>

@@ -1,39 +1,3 @@
-
-// Сэмплы загружаются сразу все в первый раз. Чтобы не было пауз при переклю-
-// чении трека. Все настройки треков сохраняются в сессии. То есть в реальном
-// времени можно быстро переключать их и изменять, а потом переключать на
-// старые, а там все последние изменения сохранены (то есть не сбивается в
-// по-умолчанию).
-
-/*
-FIXME:
-когда страница загружается в первый раз, при нажатии на play ничего не происходит.
-После обновления страницы проблема решается...
-
-сейчас для того, чтобы появились индексы совпадений, нужно нажать enter в поле
-выражения, а нужно, чтобы работало сразу при открытии страницы.
-
-у хайлайта margin-bottom должен меняться с размером шрифта, это не так сильно
-заметно, но можно и сделать. Можно, например, во 2-ой версии.
-
-TODO:
-- составить карту сэмплов - определить каким буквам/слогам/словам какие
-сэмплы будут соответствовать;
-- сделать сэмплы;
-- написать выражения для нахождений этих сэмплов (букв/слогов/слов);
-- имплементация проигрывания звука в коде.
-
-favicon;
-
-изменение буферов и выражений в зависимости от трека должны быть в функции
-changeTrack();
-
-нужно помнить о том, что некоторые браузеры не работают с .mp3. Решить эту
-проблему нужно будет также, как я делал с .ogg - определение браузера, и
-переменной, хранящей расширение файла (ogg или mp3), а файлы будут с одинако-
-выми именами.
-*/
-
 $(function() {
 
 	var expression;
@@ -46,73 +10,70 @@ $(function() {
 		this.position = 0;
 		this.id = "";
 		this.overlayID = "";
-		this.focus = false;
 		this.content = $(this.id).text();
 		this.map = {};
 		this.allMatchedIndexes = [];
 
 		this.highlightText = function() {
-			if (!this.focus) {
-				this.position %= this.size;
-				var output;
+			this.position %= this.size;
+			var output;
 
-				if (this.allMatchedIndexes.indexOf(this.position) > -1 && !this.focus) {
+			if (this.allMatchedIndexes.indexOf(this.position) > -1) {
 
-					var highlightStr = this.map[this.position];
+				var highlightStr = this.map[this.position];
 
-					// cursor highlighting
-					output = this.content.substr(0, this.position) +
-					"<span class=\"playing-symbol\">" +
-					this.content.substr(this.position, highlightStr.length) +
-					"</span>" +
-					this.content.substr(this.position+highlightStr.length);
+				// cursor highlighting
+				output = this.content.substr(0, this.position) +
+				"<span class=\"playing-symbol\">" +
+				this.content.substr(this.position, highlightStr.length) +
+				"</span>" +
+				this.content.substr(this.position+highlightStr.length);
 
-					// changing text in the highlight view
-					$(this.overlayID+" span").html(highlightStr);
-					this.position+=(highlightStr.length-1)
+				// changing text in the highlight view
+				$(this.overlayID+" span").html(highlightStr);
+				this.position+=(highlightStr.length-1)
 
-					// changing font size in the highlight view
-					var newFontSize = highlightStr.length == 1 ? 8 : 9/Math.pow(2, Math.log(highlightStr.length));
-					$(this.overlayID).css("font-size", newFontSize+"vw");
+				// changing font size in the highlight view
+				var newFontSize = highlightStr.length == 1 ? 8 : 9/Math.pow(2, Math.log(highlightStr.length));
+				$(this.overlayID).css("font-size", newFontSize+"vw");
 
-					if ($(this.overlayID).css("opacity") <= 1) {
+				if ($(this.overlayID).css("opacity") <= 1) {
 
-						// Color changing
-						var newColorIndex = Math.floor(Math.random()*colors.length);
-						var newBgfgIndex = Math.floor(Math.random()*2);
+					// Color changing
+					var newColorIndex = Math.floor(Math.random()*colors.length);
+					var newBgfgIndex = Math.floor(Math.random()*2);
 
-						var cssObj = new Object();
-						cssObj[bgfg[newBgfgIndex]] = colors[newColorIndex];
-						cssObj[bgfg[1-newBgfgIndex]] = "#ffffff";
+					var cssObj = new Object();
+					cssObj[bgfg[newBgfgIndex]] = colors[newColorIndex];
+					cssObj[bgfg[1-newBgfgIndex]] = "#ffffff";
 
-						$(this.overlayID).css(cssObj);
+					$(this.overlayID).css(cssObj);
 
-						// showing highlight
-						$(this.overlayID).stop().fadeTo(100, 1);
+					// showing highlight
+					$(this.overlayID).stop().fadeTo(100, 1);
 
-						// hidding text buffer
-						$(this.id).stop().fadeTo(100, 0);
-					}
-
-
-				} else {
-					// cursor highlighting
-					output = this.content.substr(0, this.position) +
-					"<span class=\"playing-symbol\">" +
-					this.content.substr(this.position, 1) +
-					"</span>" +
-					this.content.substr(this.position+1);
-
-					// hidding highlight view
-					if ($(this.overlayID).css("opacity") == 1) {
-						$(this.overlayID).fadeTo(1000, 0);
-						$(this.id).fadeTo(1000, 1);
-					}
+					// hidding text buffer
+					$(this.id).stop().fadeTo(100, 0);
 				}
 
-				// changing text to new output (with cursor highlighting tag)
-				$(this.id).html(output);
+
+			} else {
+				// cursor highlighting
+				output = this.content.substr(0, this.position) +
+				"<span class=\"playing-symbol\">" +
+				this.content.substr(this.position, 1) +
+				"</span>" +
+				this.content.substr(this.position+1);
+
+				// hidding highlight view
+				if ($(this.overlayID).css("opacity") == 1) {
+					$(this.overlayID).fadeTo(1000, 0);
+					$(this.id).fadeTo(1000, 1);
+				}
 			}
+
+			// changing text to new output (with cursor highlighting tag)
+			$(this.id).html(output);
 		};
 
 	}
@@ -220,7 +181,7 @@ $(function() {
 			$(data.contents).find("#mw-content-text p").each(function() {
 				str += "<p>"+$(this).text()+"</p>";
 			});
-			
+
 			//If the expected response is text/plain
 			$(bufferID).html(str).promise().done(function() {
 
@@ -307,28 +268,6 @@ $(function() {
 			updateExpression($(this).val());
 		}
 	});
-
-	// Text buffer
-	// $(".text-buffer").keyup(function() {
-	// 	updateBuffer("#"+$(this).attr("id"));
-	// });
-	//
-	// $(".text-buffer").focusin(function() {
-	// 	var buffNum = parseInt($(this).attr("id").slice(-1)) - 1;
-	// 	buffers[buffNum].focus = true;
-	// 	$(buffers[buffNum].overlayID).stop().fadeTo(200, 0);
-	// 	$(buffers[buffNum].id).stop().fadeTo(200, 1);
-	// 	$(this).html($(this).text());
-	// });
-	//
-	// $(".text-buffer").focusout(function() {
-	// 	var buffNum = parseInt($(this).attr("id").slice(-1)) - 1;
-	// 	buffers[buffNum].focus = false;
-	// 	if (buffers[buffNum].content === "") {
-	// 		buffers[buffNum].content = " ";
-	// 	}
-	// 	updateExpression($("#expression-input").val());
-	// });
 
 	// Tracklist
 	$("#tracklist").children("li").click(function() {
