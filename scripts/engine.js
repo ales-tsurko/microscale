@@ -1,87 +1,109 @@
 $(function() {
 
-	var expression;
-	var colors = ["#F800B4", "#3CDE00", "#B5F300", "#F20026", "#000000"];
-	var bgfg = ["color", "background-color"];
+	var expression,
+	buffers = [],
+	colors = ["#F800B4", "#3CDE00", "#B5F300", "#F20026", "#000000"],
+	bgfg = ["color", "background-color"];
 
-	function Buffer() {
-		var self = this;
+	function Buffer(id) {
 		this.size = 0;
 		this.position = 0;
-		this.id = "";
+		this.id = id;
 		this.overlayID = "";
 		this.content = $(this.id).text();
 		this.map = {};
 		this.allMatchedIndexes = [];
 
-		this.highlightText = function() {
-			this.position %= this.size;
-			var output;
-
-			if (this.allMatchedIndexes.indexOf(this.position) > -1) {
-
-				var highlightStr = this.map[this.position];
-
-				// cursor highlighting
-				output = this.content.substr(0, this.position) +
-				"<span class=\"playing-symbol\">" +
-				this.content.substr(this.position, highlightStr.length) +
-				"</span>" +
-				this.content.substr(this.position+highlightStr.length);
-
-				// changing text in the highlight view
-				$(this.overlayID+" span").html(highlightStr);
-				this.position+=(highlightStr.length-1)
-
-				// changing font size in the highlight view
-				var newFontSize = highlightStr.length == 1 ? 8 : 9/Math.pow(2, Math.log(highlightStr.length));
-				$(this.overlayID).css("font-size", newFontSize+"vw");
-
-				if ($(this.overlayID).css("opacity") <= 1) {
-
-					// Color changing
-					var newColorIndex = Math.floor(Math.random()*colors.length);
-					var newBgfgIndex = Math.floor(Math.random()*2);
-
-					var cssObj = new Object();
-					cssObj[bgfg[newBgfgIndex]] = colors[newColorIndex];
-					cssObj[bgfg[1-newBgfgIndex]] = "#ffffff";
-
-					$(this.overlayID).css(cssObj);
-
-					// showing highlight
-					$(this.overlayID).stop().fadeTo(100, 1);
-
-					// hidding text buffer
-					$(this.id).stop().fadeTo(100, 0);
-				}
-
-
-			} else {
-				// cursor highlighting
-				output = this.content.substr(0, this.position) +
-				"<span class=\"playing-symbol\">" +
-				this.content.substr(this.position, 1) +
-				"</span>" +
-				this.content.substr(this.position+1);
-
-				// hidding highlight view
-				if ($(this.overlayID).css("opacity") == 1) {
-					$(this.overlayID).fadeTo(1000, 0);
-					$(this.id).fadeTo(1000, 1);
-				}
-			}
-
-			// changing text to new output (with cursor highlighting tag)
-			$(this.id).html(output);
-		};
-
 	}
 
-	var buffers = [];
+	////////////////////////////////////////////////////////
+	// Shows matching for buffer and cursor incrementation
+	////////////////////////////////////////////////////////
+
+	Buffer.prototype.highlightText = function () {
+		this.position %= this.size;
+		var output;
+
+		if (this.allMatchedIndexes.indexOf(this.position) > -1) {
+
+			var highlightStr = this.map[this.position];
+
+			// cursor highlighting
+			output = this.content.substr(0, this.position) +
+			"<span class=\"playing-symbol\">" +
+			this.content.substr(this.position, highlightStr.length) +
+			"</span>" +
+			this.content.substr(this.position+highlightStr.length);
+
+			// changing text in the highlight view
+			$(this.overlayID+" span").html(highlightStr);
+			this.position+=(highlightStr.length-1);
+
+			// changing font size in the highlight view
+			var newFontSize = highlightStr.length == 1 ? 8 : 9/Math.pow(2, Math.log(highlightStr.length));
+			$(this.overlayID).css("font-size", newFontSize+"vw");
+
+			if ($(this.overlayID).css("opacity") <= 1) {
+
+				// Color changing
+				var newColorIndex = Math.floor(Math.random()*colors.length);
+				var newBgfgIndex = Math.floor(Math.random()*2);
+
+				var cssObj = {};
+				cssObj[bgfg[newBgfgIndex]] = colors[newColorIndex];
+				cssObj[bgfg[1-newBgfgIndex]] = "#ffffff";
+
+				$(this.overlayID).css(cssObj);
+
+				// showing highlight
+				$(this.overlayID).stop().fadeTo(100, 1);
+
+				// hidding text buffer
+				$(this.id).stop().fadeTo(100, 0);
+			}
+
+
+		} else {
+			// cursor highlighting
+			output = this.content.substr(0, this.position) +
+			"<span class=\"playing-symbol\">" +
+			this.content.substr(this.position, 1) +
+			"</span>" +
+			this.content.substr(this.position+1);
+
+			// hidding highlight view
+			if ($(this.overlayID).css("opacity") == 1) {
+				$(this.overlayID).fadeTo(1000, 0);
+				$(this.id).fadeTo(1000, 1);
+			}
+		}
+
+		// changing text to new output (with cursor highlighting tag)
+		$(this.id).html(output);
+	};
+
+	//////////////////////////////////////////////////////////////
+	// Updates matchings in text using new expression as argument
+	//////////////////////////////////////////////////////////////
+
+	Buffer.prototype.updateMatchings = function(expression) {
+		this.map = {};
+		this.allMatchedIndexes = [];
+
+		var match;
+		while ((match = expression.exec(this.content)) !== null) {
+			this.map[match.index] = match[0];
+			this.allMatchedIndexes.push(match.index);
+		}
+	};
+
+	////////////////////////////////////////
+	// create buffers array and assign ids
+	////////////////////////////////////////
+
 	for (var i = 0; i < 6; i++) {
-		buffers[i] = new Buffer();
-		buffers[i].id = "#buffer-"+(i+1);
+		var newID = "#buffer-"+(i+1);
+		buffers[i] = new Buffer(newID);
 		buffers[i].size = $(buffers[i].id).text().length;
 		buffers[i].overlayID = "#buffer-overlay-"+(i+1);
 	}
@@ -148,15 +170,7 @@ $(function() {
 		}
 
 		buffers.forEach(function(buf) {
-
-			buf.map = {};
-			buf.allMatchedIndexes = [];
-
-			var match;
-			while ((match = expression.exec(buf.content)) !== null) {
-				buf.map[match.index] = match[0];
-				buf.allMatchedIndexes.push(match.index);
-			}
+			buf.updateMatchings(expression);
 		});
 	}
 
@@ -195,6 +209,7 @@ $(function() {
 				// here hidding loading indicator
 				$("#load-indic-buf-"+(buffNum+1)).hide();
 				$("#load-indic-div-"+(buffNum+1)).css("z-index", -150);
+				updateExpression($("#expression-input").val());
 			});
 
 			//If the expected response is JSON
@@ -204,7 +219,7 @@ $(function() {
 
 	// Tracklist
 	function changeTrack(track) {
-		alert("track changed to: " + track);
+		// alert("track changed to: " + track);
 		switch (track) {
 			case "1":
 			Tone.Transport.bpm = 120;
@@ -280,7 +295,5 @@ $(function() {
 	buffers.forEach(function(buf) {
 		updateBuffer(buf.id);
 	});
-
-	updateExpression($("#expression-input").val());
 
 });
