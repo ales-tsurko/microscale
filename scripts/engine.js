@@ -1,112 +1,152 @@
 $(function() {
 
-	var expression,
-	buffers = [],
-	colors = ["#F800B4", "#3CDE00", "#B5F300", "#F20026", "#000000"],
-	bgfg = ["color", "background-color"];
-
-	function Buffer(id) {
+	function Buffer(id, overlayID) {
 		this.size = 0;
 		this.position = 0;
 		this.id = id;
-		this.overlayID = "";
+		this.overlayID = overlayID;
 		this.content = $(this.id).text();
 		this.map = {};
 		this.allMatchedIndexes = [];
-
 	}
 
+	Buffer.colors = ["#F800B4", "#3CDE00", "#B5F300", "#F20026", "#000000"];
+	Buffer.bgfg = ["color", "background-color"];
+
 	////////////////////////////////////////////////////////
-	// Shows matching for buffer and cursor incrementation
+	// Shows cursor incrementation and matchings for buffer
 	////////////////////////////////////////////////////////
 
 	Buffer.prototype.highlightText = function () {
+		var self = this;
 		this.position %= this.size;
 		var output;
 
-		if (this.allMatchedIndexes.indexOf(this.position) > -1) {
+		if (self.allMatchedIndexes.indexOf(self.position) > -1) {
 
-			var highlightStr = this.map[this.position];
+			var highlightStr = self.map[self.position];
 
 			// cursor highlighting
-			output = this.content.substr(0, this.position) +
+			output = self.content.substr(0, self.position) +
 			"<span class=\"playing-symbol\">" +
-			this.content.substr(this.position, highlightStr.length) +
+			self.content.substr(self.position, highlightStr.length) +
 			"</span>" +
-			this.content.substr(this.position+highlightStr.length);
+			self.content.substr(self.position+highlightStr.length);
 
 			// changing text in the highlight view
-			$(this.overlayID+" span").html(highlightStr);
-			this.position+=(highlightStr.length-1);
+			$(self.overlayID+" span").html(highlightStr);
+			self.position+=(highlightStr.length-1);
 
 			// changing font size in the highlight view
 			var newFontSize = highlightStr.length == 1 ? 8 : 9/Math.pow(2, Math.log(highlightStr.length));
-			$(this.overlayID).css("font-size", newFontSize+"vw");
+			$(self.overlayID).css("font-size", newFontSize+"vw");
 
-			if ($(this.overlayID).css("opacity") <= 1) {
+			if ($(self.overlayID).css("opacity") <= 1) {
 
 				// Color changing
-				var newColorIndex = Math.floor(Math.random()*colors.length);
+				var newColorIndex = Math.floor(Math.random()*Buffer.colors.length);
 				var newBgfgIndex = Math.floor(Math.random()*2);
 
 				var cssObj = {};
-				cssObj[bgfg[newBgfgIndex]] = colors[newColorIndex];
-				cssObj[bgfg[1-newBgfgIndex]] = "#ffffff";
+				cssObj[Buffer.bgfg[newBgfgIndex]] = Buffer.colors[newColorIndex];
+				cssObj[Buffer.bgfg[1-newBgfgIndex]] = "#ffffff";
 
-				$(this.overlayID).css(cssObj);
+				$(self.overlayID).css(cssObj);
 
 				// showing highlight
-				$(this.overlayID).stop().fadeTo(100, 1);
+				$(self.overlayID).stop().fadeTo(100, 1);
 
 				// hidding text buffer
-				$(this.id).stop().fadeTo(100, 0);
+				$(self.id).stop().fadeTo(100, 0);
 			}
 
 
 		} else {
 			// cursor highlighting
-			output = this.content.substr(0, this.position) +
+			output = self.content.substr(0, self.position) +
 			"<span class=\"playing-symbol\">" +
-			this.content.substr(this.position, 1) +
+			self.content.substr(self.position, 1) +
 			"</span>" +
-			this.content.substr(this.position+1);
+			self.content.substr(self.position+1);
 
 			// hidding highlight view
-			if ($(this.overlayID).css("opacity") == 1) {
-				$(this.overlayID).fadeTo(1000, 0);
-				$(this.id).fadeTo(1000, 1);
+			if ($(self.overlayID).css("opacity") == 1) {
+				$(self.overlayID).fadeTo(1000, 0);
+				$(self.id).fadeTo(1000, 1);
 			}
 		}
 
 		// changing text to new output (with cursor highlighting tag)
-		$(this.id).html(output);
+		$(self.id).html(output);
 	};
 
 	//////////////////////////////////////////////////////////////
 	// Updates matchings in text using new expression as argument
 	//////////////////////////////////////////////////////////////
 
-	Buffer.prototype.updateMatchings = function(expression) {
+	Buffer.prototype.updateMatchings = function() {
+		var self = this;
 		this.map = {};
 		this.allMatchedIndexes = [];
 
 		var match;
-		while ((match = expression.exec(this.content)) !== null) {
-			this.map[match.index] = match[0];
-			this.allMatchedIndexes.push(match.index);
+		while ((match = Buffer.expression.exec(self.content)) !== null) {
+			self.map[match.index] = match[0];
+			self.allMatchedIndexes.push(match.index);
 		}
 	};
 
-	////////////////////////////////////////
-	// create buffers array and assign ids
-	////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	// Downloads new text from wikipedia and reloads buffer content
+	/////////////////////////////////////////////////////////////////
 
-	for (var i = 0; i < 6; i++) {
-		var newID = "#buffer-"+(i+1);
-		buffers[i] = new Buffer(newID);
-		buffers[i].size = $(buffers[i].id).text().length;
-		buffers[i].overlayID = "#buffer-overlay-"+(i+1);
-	}
+	Buffer.prototype.update = function() {
+		var self = this;
+		var buffNum = parseInt(this.id.slice(-1)) - 1;
+
+		// here showing loading indicator
+		$("#load-indic-buf-"+(buffNum+1)).show();
+		$("#load-indic-div-"+(buffNum+1)).css("z-index", 150);
+
+		$.ajaxSetup({
+			scriptCharset: "utf-8", //or "ISO-8859-1"
+			contentType: "application/json; charset=utf-8"
+		});
+
+		$.getJSON('http://whateverorigin.org/get?url=' +
+		encodeURIComponent('https://en.wikipedia.org/wiki/Special:Random') + '&callback=?',
+		function (data) {
+			// data editing
+			var str = "";
+			$(data.contents).find("#mw-content-text p").each(function() {
+				str += "<p>"+$(this).text()+"</p>";
+			});
+
+			//If the expected response is text/plain
+			$(self.id).html(str).promise().done(function() {
+
+				self.size = $(self.id).text().length;
+				if (self.position > self.size) {
+					self.position = 0;
+				}
+
+				self.content = $(self.id).text();
+
+				// here hidding loading indicator
+				$("#load-indic-buf-"+(buffNum+1)).hide();
+				$("#load-indic-div-"+(buffNum+1)).css("z-index", -150);
+
+				self.updateMatchings();
+			});
+		});
+	};
+
+	// Buffers array declaration (initialization is in the bottom)
+	var buffers = [];
+
+	/////////////////
+	// Sound engine
+	/////////////////
 
 	// Buffer-1 scheduler
 	Tone.Transport.scheduleRepeat(function() {
@@ -154,104 +194,9 @@ $(function() {
 		});
 	}
 
-	// Expression
-	function updateExpression(expr) {
-
-		if (expr !== "") {
-			try {
-				expression = new RegExp(expr, "gm");
-			} catch (e) {
-				alert(e);
-				$("#expression-input").val(expression.source);
-			}
-		} else {
-			alert("This field cannot be empty.");
-			$("#expression-input").val(expression.source);
-		}
-
-		buffers.forEach(function(buf) {
-			buf.updateMatchings(expression);
-		});
-	}
-
-	// Buffers
-	function updateBuffer(bufferID) {
-		var buffNum = parseInt(bufferID.slice(-1)) - 1;
-
-		// here showing loading indicator
-		$("#load-indic-buf-"+(buffNum+1)).show();
-		$("#load-indic-div-"+(buffNum+1)).css("z-index", 150);
-
-		$.ajaxSetup({
-			scriptCharset: "utf-8", //or "ISO-8859-1"
-			contentType: "application/json; charset=utf-8"
-		});
-
-		$.getJSON('http://whateverorigin.org/get?url=' +
-		encodeURIComponent('https://en.wikipedia.org/wiki/Special:Random') + '&callback=?',
-		function (data) {
-			// data editing
-			var str = "";
-			$(data.contents).find("#mw-content-text p").each(function() {
-				str += "<p>"+$(this).text()+"</p>";
-			});
-
-			//If the expected response is text/plain
-			$(bufferID).html(str).promise().done(function() {
-
-				buffers[buffNum].size = $(bufferID).text().length;
-				if (buffers[buffNum].position > buffers[buffNum].size) {
-					buffers[buffNum].position = 0;
-				}
-
-				buffers[buffNum].content = $(bufferID).text();
-
-				// here hidding loading indicator
-				$("#load-indic-buf-"+(buffNum+1)).hide();
-				$("#load-indic-div-"+(buffNum+1)).css("z-index", -150);
-				updateExpression($("#expression-input").val());
-			});
-
-			//If the expected response is JSON
-			//var response = $.parseJSON(data.contents);
-		});
-	}
-
-	// Tracklist
-	function changeTrack(track) {
-		// alert("track changed to: " + track);
-		switch (track) {
-			case "1":
-			Tone.Transport.bpm = 120;
-			buffers.forEach(function(buf) {
-				updateBuffer(buf.id);
-			});
-			break;
-
-			case "2":
-			buffers.forEach(function(buf) {
-				updateBuffer(buf.id);
-			});
-			break;
-
-			case "3":
-			buffers.forEach(function(buf) {
-				updateBuffer(buf.id);
-			});
-			break;
-
-			case "4":
-			buffers.forEach(function(buf) {
-				updateBuffer(buf.id);
-			});
-			break;
-
-			default:
-			break;
-		}
-	}
-
-	/*------------------UI Actions-----------------*/
+	////////////////////////////////////////////////
+	/*------------------UI Actions----------------*/
+	////////////////////////////////////////////////
 
 	// Transport buttons
 	$("#play-button").click(function() {
@@ -278,22 +223,86 @@ $(function() {
 	});
 
 	// Expression
+	function updateExpression(expr) {
+		if (expr !== "") {
+			try {
+				Buffer.expression = new RegExp(expr, "gm");
+			} catch (e) {
+				alert(e);
+				$("#expression-input").val(Buffer.expression.source);
+			}
+		} else {
+			alert("This field cannot be empty.");
+			$("#expression-input").val(Buffer.expression.source);
+		}
+
+		buffers.forEach(function(buf) {
+			buf.updateMatchings();
+		});
+	}
+
 	$("#expression-input").on("keydown",function search(e) {
 		if(e.keyCode == 13) {
 			updateExpression($(this).val());
 		}
 	});
 
+	$("#expression-input").focusout(function() {
+		updateExpression($(this).val());
+	});
+
 	// Tracklist
+	function trackDidChangeTo(track) {
+		// alert("track changed to: " + track);
+		switch (track) {
+			case "1":
+			Tone.Transport.bpm = 120;
+			buffers.forEach(function(buf) {
+				buf.update();
+			});
+			break;
+
+			case "2":
+			buffers.forEach(function(buf) {
+				buf.update();
+			});
+			break;
+
+			case "3":
+			buffers.forEach(function(buf) {
+				buf.update();
+			});
+			break;
+
+			case "4":
+			buffers.forEach(function(buf) {
+				buf.update();
+			});
+			break;
+
+			default:
+			break;
+		}
+	}
+
 	$("#tracklist").children("li").click(function() {
 		$("#tracklist").children("li").removeClass("current-track");
 		$(this).addClass("current-track");
-		changeTrack($(this).text());
+
+		trackDidChangeTo($(this).text());
 	});
 
-	//-----------Initializations
-	buffers.forEach(function(buf) {
-		updateBuffer(buf.id);
-	});
+	////////////////////////////////////////
+	//----------Initializations-----------//
+	////////////////////////////////////////
+	updateExpression($("#expression-input").val());
+
+	for (var i = 0; i < 6; i++) {
+		var newID = "#buffer-"+(i+1);
+		var newOverlayID = "#buffer-overlay-"+(i+1);
+		buffers[i] = new Buffer(newID, newOverlayID);
+		buffers[i].size = $(buffers[i].id).text().length;
+		buffers[i].update();
+	}
 
 });
