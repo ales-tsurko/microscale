@@ -121,7 +121,14 @@ $(function() {
 				str += "<p>"+$(this).text()+"</p>";
 			});
 
-			//If the expected response is text/plain
+			// loading text into buffer
+
+			// check if new text length is not less than 100 characters
+			if (str.length < 100) {
+				self.update();
+				return;
+			}
+
 			$(self.id).html(str).promise().done(function() {
 
 				self.size = $(self.id).text().length;
