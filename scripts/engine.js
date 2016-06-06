@@ -32,8 +32,8 @@ $(function() {
 
 			// hidding highlight view
 			if ($(self.overlayID).css("opacity") == 1) {
-				$(self.overlayID).fadeTo(1000, 0);
-				$(self.id).fadeTo(1000, 1);
+				$(self.overlayID).fadeTo(2000, 0);
+				$(self.id).fadeTo(2000, 1);
 			}
 
 		} else {
