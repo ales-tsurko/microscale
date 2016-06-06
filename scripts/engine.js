@@ -22,7 +22,21 @@ $(function() {
 		this.position %= this.size;
 		var output;
 
-		if (self.allMatchedIndexes.indexOf(self.position) > -1) {
+		if (self.allMatchedIndexes.indexOf(self.position) < 0) {
+			// cursor highlighting
+			output = self.content.substr(0, self.position) +
+			"<span class=\"playing-symbol\">" +
+			self.content.substr(self.position, 1) +
+			"</span>" +
+			self.content.substr(self.position+1);
+
+			// hidding highlight view
+			if ($(self.overlayID).css("opacity") == 1) {
+				$(self.overlayID).fadeTo(1000, 0);
+				$(self.id).fadeTo(1000, 1);
+			}
+
+		} else {
 
 			var highlightStr = self.map[self.position];
 
@@ -59,25 +73,10 @@ $(function() {
 				// hidding text buffer
 				$(self.id).stop().fadeTo(100, 0);
 			}
-
-
-		} else {
-			// cursor highlighting
-			output = self.content.substr(0, self.position) +
-			"<span class=\"playing-symbol\">" +
-			self.content.substr(self.position, 1) +
-			"</span>" +
-			self.content.substr(self.position+1);
-
-			// hidding highlight view
-			if ($(self.overlayID).css("opacity") == 1) {
-				$(self.overlayID).fadeTo(1000, 0);
-				$(self.id).fadeTo(1000, 1);
-			}
 		}
 
 		// changing text to new output (with cursor highlighting tag)
-		$(self.id).html(output);
+		$(this.id).html(output);
 	};
 
 	//////////////////////////////////////////////////////////////
@@ -159,23 +158,48 @@ $(function() {
 
 	// Buffer-2 scheduler
 	Tone.Transport.scheduleRepeat(function() {
-	}, "8n", "0");
+		if (buffers[1].size > 0) {
+			buffers[1].highlightText();
+
+			buffers[1].position++;
+		}
+	}, "16n", "0");
 
 	// Buffer-3 scheduler
 	Tone.Transport.scheduleRepeat(function() {
-	}, "8n", "0");
+		if (buffers[2].size > 0) {
+			buffers[2].highlightText();
+
+			buffers[2].position++;
+		}
+	}, "16n", "0");
 
 	// Buffer-4 scheduler
 	Tone.Transport.scheduleRepeat(function() {
-	}, "8n", "0");
+		if (buffers[3].size > 0) {
+			buffers[3].highlightText();
+
+			buffers[3].position++;
+		}
+	}, "16n", "0");
 
 	// Buffer-5 scheduler
 	Tone.Transport.scheduleRepeat(function() {
-	}, "8n", "0");
+		if (buffers[4].size > 0) {
+			buffers[4].highlightText();
+
+			buffers[4].position++;
+		}
+	}, "16n", "0");
 
 	// Buffer-6 scheduler
 	Tone.Transport.scheduleRepeat(function() {
-	}, "8n", "0");
+		if (buffers[5].size > 0) {
+			buffers[5].highlightText();
+
+			buffers[5].position++;
+		}
+	}, "16n", "0");
 
 	// Transport
 	function play() {
