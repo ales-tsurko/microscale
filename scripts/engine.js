@@ -121,14 +121,13 @@ $(function() {
 				str += "<p>"+$(this).text()+"</p>";
 			});
 
-			// loading text into buffer
-
 			// check if new text length is not less than 100 characters
 			if (str.length < 100) {
 				self.update();
 				return;
 			}
 
+			// loading text into buffer
 			$(self.id).html(str).promise().done(function() {
 
 				self.size = $(self.id).text().length;
@@ -147,12 +146,22 @@ $(function() {
 		});
 	};
 
-	// Buffers array declaration (initialization is in the bottom)
-	var buffers = [];
+	/////////////////////////////////
+	// Buffers array initialization
+	/////////////////////////////////
 
-	/////////////////
-	// Sound engine
-	/////////////////
+	var buffers = [];
+	for (var i = 0; i < 6; i++) {
+		var newID = "#buffer-"+(i+1);
+		var newOverlayID = "#buffer-overlay-"+(i+1);
+		buffers[i] = new Buffer(newID, newOverlayID);
+		buffers[i].size = $(buffers[i].id).text().length;
+		buffers[i].update();
+	}
+
+	////////////////////////////////////////////
+	/*--------------Sound engine--------------*/
+	////////////////////////////////////////////
 
 	// Buffer-1 scheduler
 	Tone.Transport.scheduleRepeat(function() {
@@ -225,9 +234,9 @@ $(function() {
 		});
 	}
 
-	////////////////////////////////////////////////
-	/*------------------UI Actions----------------*/
-	////////////////////////////////////////////////
+	//////////////////////////////////////
+	/*----------------UI----------------*/
+	//////////////////////////////////////
 
 	// Transport buttons
 	$("#play-button").click(function() {
@@ -282,6 +291,8 @@ $(function() {
 		updateExpression($(this).val());
 	});
 
+	updateExpression($("#expression-input").val());
+
 	// Tracklist
 	function trackDidChangeTo(track) {
 		// alert("track changed to: " + track);
@@ -322,18 +333,5 @@ $(function() {
 
 		trackDidChangeTo($(this).text());
 	});
-
-	////////////////////////////////////////
-	//----------Initializations-----------//
-	////////////////////////////////////////
-	updateExpression($("#expression-input").val());
-
-	for (var i = 0; i < 6; i++) {
-		var newID = "#buffer-"+(i+1);
-		var newOverlayID = "#buffer-overlay-"+(i+1);
-		buffers[i] = new Buffer(newID, newOverlayID);
-		buffers[i].size = $(buffers[i].id).text().length;
-		buffers[i].update();
-	}
 
 });
