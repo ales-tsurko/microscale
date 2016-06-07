@@ -8,6 +8,7 @@ $(function() {
 		this.content = $(this.id).text();
 		this.map = {};
 		this.allMatchedIndexes = [];
+		this.currentParagraphIndex = 0;
 	}
 
 	Buffer.colors = ["#F800B4", "#3CDE00", "#B5F300", "#F20026", "#000000"];
@@ -18,17 +19,24 @@ $(function() {
 	////////////////////////////////////////////////////////
 
 	Buffer.prototype.highlightText = function () {
-		var self = this;
+		var output = "", currentParagraphTextLength,
+		self = this;
 		this.position %= this.size;
-		var output;
+
+		var parargraphsCount = $(self.id + " p").length;
+		var paragraphLength = $($(self.id + " p").get(this.currentParagraphIndex)).text().length;
+
+		if (this.position > 0 && this.position%paragraphLength === 0) {
+			this.currentParagraphIndex++;
+			this.currentParagraphIndex %= parargraphsCount;
+		} else if (this.position === 0) {
+			this.currentParagraphIndex = 0;
+		}
 
 		if (self.allMatchedIndexes.indexOf(self.position) < 0) {
 			// cursor highlighting
-			output = self.content.substr(0, self.position) +
-			"<span class=\"playing-symbol\">" +
-			self.content.substr(self.position, 1) +
-			"</span>" +
-			self.content.substr(self.position+1);
+			// $(self.id + " p").each(function(n) {
+			// 	if (n === self.currentParagraphIndex) {
 
 			// hidding highlight view
 			if ($(self.overlayID).css("opacity") == 1) {
@@ -41,11 +49,24 @@ $(function() {
 			var highlightStr = self.map[self.position];
 
 			// cursor highlighting
-			output = self.content.substr(0, self.position) +
-			"<span class=\"playing-symbol\">" +
-			self.content.substr(self.position, highlightStr.length) +
-			"</span>" +
-			self.content.substr(self.position+highlightStr.length);
+			// commented to increase performance
+			//
+			// highlights matching before showing the highlight view
+			//
+			// $(self.id + " p").each(function(n) {
+			// 	if (n === self.currentParagraphIndex) {
+			// 		var text = $(this).text();
+			//
+			// 		output += "<p>"+text.substr(0, self.position) +
+			// 		"<span class=\"playing-symbol\">" +
+			// 		text.substr(self.position, highlightStr.length) +
+			// 		"</span>" +
+			// 		text.substr(self.position+highlightStr.length)+" </p>";
+			//
+			// 	} else {
+			// 		output += "<p>"+$(this).text()+" </p>";
+			// 	}
+			// });
 
 			// changing text in the highlight view
 			$(self.overlayID+" span").html(highlightStr);
@@ -75,8 +96,17 @@ $(function() {
 			}
 		}
 
-		// changing text to new output (with cursor highlighting tag)
-		$(this.id).html(output);
+		// highlight symbol under current cursor position
+		var $thisParagraph = $(self.id + " p:eq("+self.currentParagraphIndex+")");
+		var text = $thisParagraph.text();
+
+		output = "<p>"+text.substr(0, self.position) +
+		"<span class=\"playing-symbol\">" +
+		text.substr(self.position, 1) +
+		"</span>" +
+		text.substr(self.position+1)+" </p>";
+
+		$thisParagraph.replaceWith(output);
 	};
 
 	//////////////////////////////////////////////////////////////
