@@ -142,7 +142,10 @@ $(function() {
 		function (data) {
 			// data editing
 			var str = "";
-			$(data.contents).find("#mw-content-text p").each(function() {
+			// remove all the imgs from data to prevent 404 on using the data
+			// with jquery
+			var htmlStr = data.contents.replace(/<\/?img.*>/gm, '');
+			$(htmlStr).find("#mw-content-text p").each(function() {
 				str += "<p>"+$(this).text()+"</p>";
 			});
 
