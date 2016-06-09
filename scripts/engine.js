@@ -163,7 +163,7 @@ $(function() {
 				self.currentParagraphIndex = 0;
 				self.previousParagraphLength = 0;
 				self.lastParagraphNumber = 0;
-				
+
 				self.content = $(self.id).text();
 
 				// here hidding loading indicator
@@ -259,6 +259,9 @@ $(function() {
 		Tone.Transport.position = "0:0:0";
 		buffers.forEach(function(buf) {
 			buf.position = 0;
+			buf.currentParagraphIndex = 0;
+			buf.previousParagraphLength = 0;
+			buf.lastParagraphNumber = 0;
 			buf.highlightText();
 		});
 	}
@@ -292,7 +295,7 @@ $(function() {
 	});
 
 	// Expression
-	function updateExpression(expr) {
+	function expressionDidUpdate(expr) {
 		if (expr !== "") {
 			try {
 				Buffer.expression = new RegExp(expr, "gm");
@@ -312,15 +315,15 @@ $(function() {
 
 	$("#expression-input").on("keydown",function search(e) {
 		if(e.keyCode == 13) {
-			updateExpression($(this).val());
+			expressionDidUpdate($(this).val());
 		}
 	});
 
 	$("#expression-input").focusout(function() {
-		updateExpression($(this).val());
+		expressionDidUpdate($(this).val());
 	});
 
-	updateExpression($("#expression-input").val());
+	expressionDidUpdate($("#expression-input").val());
 
 	// Tracklist
 	function trackDidChangeTo(track) {
