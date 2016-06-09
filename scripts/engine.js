@@ -159,13 +159,11 @@ $(function() {
 			$(self.id).html(str).promise().done(function() {
 
 				self.size = $(self.id).text().length;
+				self.position = 0;
 				self.currentParagraphIndex = 0;
 				self.previousParagraphLength = 0;
 				self.lastParagraphNumber = 0;
-				if (self.position > self.size) {
-					self.position = 0;
-				}
-
+				
 				self.content = $(self.id).text();
 
 				// here hidding loading indicator
