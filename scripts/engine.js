@@ -9,6 +9,8 @@ $(function() {
 		this.map = {};
 		this.allMatchedIndexes = [];
 		this.currentParagraphIndex = 0;
+		this.previousParagraphLength = 0;
+		this.lastParagraphNumber = 0;
 	}
 
 	Buffer.colors = ["#F800B4", "#3CDE00", "#B5F300", "#F20026", "#000000"];
@@ -19,25 +21,50 @@ $(function() {
 	////////////////////////////////////////////////////////
 
 	Buffer.prototype.highlightText = function () {
-		var output = "", currentParagraphTextLength,
+		var output = "",
 		self = this;
 		this.position %= this.size;
 
-		var parargraphsCount = $(self.id + " p").length;
-		var paragraphLength = $($(self.id + " p").get(this.currentParagraphIndex)).text().length;
+		// ______________________________________________
+		// highlight symbol under current cursor position
+		var $thisParagraph = $(self.id + " p:eq("+self.currentParagraphIndex+")");
+		var paragraphLength = $thisParagraph.text().length;
+		var paragraphCursorPosition = self.position-self.previousParagraphLength;
 
-		if (this.position > 0 && this.position%paragraphLength === 0) {
-			this.currentParagraphIndex++;
-			this.currentParagraphIndex %= parargraphsCount;
-		} else if (this.position === 0) {
-			this.currentParagraphIndex = 0;
+		if (self.position === 0 && self.lastParagraphNumber !== 0) {
+			// remove highlighting tag of last symbol in the buffer, when
+			// the cursor returns to the start
+			var $lastPar = $(self.id + " p:eq("+self.lastParagraphNumber+")");
+			var lastParText = $lastPar.text();
+			var newOutput = "<p>" + lastParText + "</p>";
+			$lastPar.replaceWith(newOutput);
 		}
 
-		if (self.allMatchedIndexes.indexOf(self.position) < 0) {
-			// cursor highlighting
-			// $(self.id + " p").each(function(n) {
-			// 	if (n === self.currentParagraphIndex) {
+		if (paragraphCursorPosition === paragraphLength || paragraphLength === 0) {
+			self.previousParagraphLength += $(self.id + " p:eq("+self.currentParagraphIndex+")").text().length;
+			self.currentParagraphIndex++;
+		}
 
+		if (self.position === (self.size-1)) {
+			self.lastParagraphNumber = self.currentParagraphIndex;
+			self.currentParagraphIndex = 0;
+			self.previousParagraphLength = 0;
+		}
+
+		var text = $thisParagraph.text();
+
+		output = "<p>" + text.substr(0, paragraphCursorPosition) +
+		"<span class=\"playing-symbol\">" +
+		text.substr(paragraphCursorPosition, 1) +
+		"</span>" +
+		text.substr(paragraphCursorPosition+1) + "</p>";
+
+		$thisParagraph.replaceWith(output);
+
+		// ___________________
+		// highlight matchings
+
+		if (self.allMatchedIndexes.indexOf(self.position) < 0) {
 			// hidding highlight view
 			if ($(self.overlayID).css("opacity") == 1) {
 				$(self.overlayID).fadeTo(2000, 0);
@@ -47,26 +74,6 @@ $(function() {
 		} else {
 
 			var highlightStr = self.map[self.position];
-
-			// cursor highlighting
-			// commented to increase performance
-			//
-			// highlights matching before showing the highlight view
-			//
-			// $(self.id + " p").each(function(n) {
-			// 	if (n === self.currentParagraphIndex) {
-			// 		var text = $(this).text();
-			//
-			// 		output += "<p>"+text.substr(0, self.position) +
-			// 		"<span class=\"playing-symbol\">" +
-			// 		text.substr(self.position, highlightStr.length) +
-			// 		"</span>" +
-			// 		text.substr(self.position+highlightStr.length)+" </p>";
-			//
-			// 	} else {
-			// 		output += "<p>"+$(this).text()+" </p>";
-			// 	}
-			// });
 
 			// changing text in the highlight view
 			$(self.overlayID+" span").html(highlightStr);
@@ -95,18 +102,6 @@ $(function() {
 				$(self.id).stop().fadeTo(100, 0);
 			}
 		}
-
-		// highlight symbol under current cursor position
-		var $thisParagraph = $(self.id + " p:eq("+self.currentParagraphIndex+")");
-		var text = $thisParagraph.text();
-
-		output = "<p>"+text.substr(0, self.position) +
-		"<span class=\"playing-symbol\">" +
-		text.substr(self.position, 1) +
-		"</span>" +
-		text.substr(self.position+1)+" </p>";
-
-		$thisParagraph.replaceWith(output);
 	};
 
 	//////////////////////////////////////////////////////////////
@@ -161,6 +156,9 @@ $(function() {
 			$(self.id).html(str).promise().done(function() {
 
 				self.size = $(self.id).text().length;
+				self.currentParagraphIndex = 0;
+				self.previousParagraphLength = 0;
+				self.lastParagraphNumber = 0;
 				if (self.position > self.size) {
 					self.position = 0;
 				}
