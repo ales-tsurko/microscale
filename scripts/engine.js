@@ -249,6 +249,9 @@ $(function() {
 	// Transport
 	function play() {
 		Tone.Transport.start();
+		if (Tone.context.state === "suspended") {
+			Tone.context.resume();
+		}
 	}
 
 	function pause() {
@@ -295,7 +298,7 @@ $(function() {
 	});
 
 	// Expression
-	function expressionDidUpdate(expr) {
+	function expressionDidUpdateWith(expr) {
 		if (expr !== "") {
 			try {
 				Buffer.expression = new RegExp(expr, "gm");
@@ -315,15 +318,15 @@ $(function() {
 
 	$("#expression-input").on("keydown",function search(e) {
 		if(e.keyCode == 13) {
-			expressionDidUpdate($(this).val());
+			expressionDidUpdateWith($(this).val());
 		}
 	});
 
 	$("#expression-input").focusout(function() {
-		expressionDidUpdate($(this).val());
+		expressionDidUpdateWith($(this).val());
 	});
 
-	expressionDidUpdate($("#expression-input").val());
+	expressionDidUpdateWith($("#expression-input").val());
 
 	// Tracklist
 	function trackDidChangeTo(track) {
