@@ -212,7 +212,7 @@ $(function() {
 				buf.position++;
 			}
 		});
-	}, "2m", "0");
+	}, "1m", "0");
 
 	// Transport
 	function play() {
@@ -309,7 +309,7 @@ $(function() {
 		expressionDidUpdateWith(expr);
 
 		// Update tempo
-		Tone.Transport.bpm = songsData[track-1].tempo;
+		Tone.Transport.bpm.value = songsData[track-1].tempo;
 
 		currentSongData = songsData[track-1];
 
