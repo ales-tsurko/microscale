@@ -1,4 +1,6 @@
 $(function() {
+	var songsData = JSON.parse(data);
+	var sampler, currentSongData;
 
 	function Buffer(id, overlayID) {
 		this.size = 0;
@@ -11,6 +13,7 @@ $(function() {
 		this.currentParagraphIndex = 0;
 		this.previousParagraphLength = 0;
 		this.lastParagraphNumber = 0;
+		this.samplerID = "";
 	}
 
 	Buffer.colors = ["#F800B4", "#3CDE00", "#B5F300", "#F20026", "#000000"];
@@ -72,8 +75,14 @@ $(function() {
 			}
 
 		} else {
-
 			var highlightStr = self.map[self.position];
+			// playing sample
+
+			var sampleToPlay = self.samplerID + "." + currentSongData.matchings[highlightStr];
+			// console.log(sampleToPlay);
+			sampler.triggerAttack(sampleToPlay);
+
+			// showing highlight
 
 			// changing text in the highlight view
 			$(self.overlayID+" span").html(highlightStr);
@@ -179,12 +188,15 @@ $(function() {
 	// Buffers array initialization
 	/////////////////////////////////
 
-	var buffers = [];
+	var buffers = [],
+	samplerIDs = ["A", "B", "C", "D", "E", "F"];
+
 	for (var i = 0; i < 6; i++) {
 		var newID = "#buffer-"+(i+1);
 		var newOverlayID = "#buffer-overlay-"+(i+1);
 		buffers[i] = new Buffer(newID, newOverlayID);
 		buffers[i].size = $(buffers[i].id).text().length;
+		buffers[i].samplerID = samplerIDs[i];
 		buffers[i].update();
 	}
 
@@ -194,57 +206,13 @@ $(function() {
 
 	// Buffer-1 scheduler
 	Tone.Transport.scheduleRepeat(function() {
-		if (buffers[0].size > 0) {
-			buffers[0].highlightText();
-
-			buffers[0].position++;
-		}
-	}, "16n", "0");
-
-	// Buffer-2 scheduler
-	Tone.Transport.scheduleRepeat(function() {
-		if (buffers[1].size > 0) {
-			buffers[1].highlightText();
-
-			buffers[1].position++;
-		}
-	}, "16n", "0");
-
-	// Buffer-3 scheduler
-	Tone.Transport.scheduleRepeat(function() {
-		if (buffers[2].size > 0) {
-			buffers[2].highlightText();
-
-			buffers[2].position++;
-		}
-	}, "16n", "0");
-
-	// Buffer-4 scheduler
-	Tone.Transport.scheduleRepeat(function() {
-		if (buffers[3].size > 0) {
-			buffers[3].highlightText();
-
-			buffers[3].position++;
-		}
-	}, "16n", "0");
-
-	// Buffer-5 scheduler
-	Tone.Transport.scheduleRepeat(function() {
-		if (buffers[4].size > 0) {
-			buffers[4].highlightText();
-
-			buffers[4].position++;
-		}
-	}, "16n", "0");
-
-	// Buffer-6 scheduler
-	Tone.Transport.scheduleRepeat(function() {
-		if (buffers[5].size > 0) {
-			buffers[5].highlightText();
-
-			buffers[5].position++;
-		}
-	}, "16n", "0");
+		buffers.forEach(function(buf) {
+			if (buf.size > 0) {
+				buf.highlightText();
+				buf.position++;
+			}
+		});
+	}, "2m", "0");
 
 	// Transport
 	function play() {
@@ -330,36 +298,34 @@ $(function() {
 
 	// Tracklist
 	function trackDidChangeTo(track) {
-		// alert("track changed to: " + track);
+		// Update buffers
+		buffers.forEach(function(buf) {
+			buf.update();
+		});
+
+		// Update expression
+		var expr = songsData[track-1].expression;
+		$("#expression-input").val(expr);
+		expressionDidUpdateWith(expr);
+
+		// Update tempo
+		Tone.Transport.bpm = songsData[track-1].tempo;
+
+		currentSongData = songsData[track-1];
+
 		switch (track) {
-			case "1":
-			Tone.Transport.bpm = 120;
-			buffers.forEach(function(buf) {
-				buf.update();
-			});
+			case 1:
+			sampler = new Tone.Sampler(currentSongData.samplemap).toMaster();
+			sampler.volume.value = -9;
 			break;
 
-			case "2":
-			buffers.forEach(function(buf) {
-				buf.update();
-			});
+			case 2:
 			break;
 
-			case "3":
-			buffers.forEach(function(buf) {
-				buf.update();
-			});
-			break;
-
-			case "4":
-			buffers.forEach(function(buf) {
-				buf.update();
-			});
-			break;
-
-			default:
-			break;
+			default: break;
 		}
+
+		console.log(songsData[track-1]);
 	}
 
 	$("#tracklist").children("li").click(function() {
@@ -369,4 +335,6 @@ $(function() {
 		trackDidChangeTo($(this).text());
 	});
 
+	// initialization
+	trackDidChangeTo(1);
 });
