@@ -285,6 +285,13 @@ $(function() {
 	expressionDidUpdateWith($("#expression-input").val());
 
 	// Tracklist
+	$("#tracklist").children("li").click(function() {
+		$("#tracklist").children("li").removeClass("current-track");
+		$(this).addClass("current-track");
+
+		trackDidChangeTo($(this).text());
+	});
+
 	function trackDidChangeTo(track) {
 		// Update buffers
 		buffers.forEach(function(buf) {
@@ -312,7 +319,7 @@ $(function() {
 		$("#loading-buffers-indicator").show();
 
 		switch (track) {
-			case 1:
+			case "1":
 			samples = new Tone.Buffers(currentSongData.samplemap, function() {
 				$("#play-button").show();
 				$("#rewind-button").show();
@@ -321,30 +328,14 @@ $(function() {
 			sampler = new Tone.MultiPlayer(samples).toMaster();
 			break;
 
-			case 2:
+			case "2":
 			break;
 
 			default: break;
 		}
 
-		console.log(songsData[track-1]);
+		// console.log(songsData[track-1]);
 	}
-
-	$("#tracklist").children("li").click(function() {
-		$("#tracklist").children("li").removeClass("current-track");
-		$(this).addClass("current-track");
-
-		trackDidChangeTo($(this).text());
-	});
-	//
-	// Tone.Buffer.onload = function() {
-	// 	console.log("all the buffers is loaded");
-	// };
-	//
-	// Tone.Buffer.onprogress = function() {
-	// 	console.log("loading audio buffers");
-	// };
-
 
 	//-----------------
 	// INITIALIZATIONS
@@ -361,5 +352,5 @@ $(function() {
 	}
 
 	// set track to first
-	trackDidChangeTo(1);
+	trackDidChangeTo("1");
 });
