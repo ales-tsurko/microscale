@@ -50,6 +50,57 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 		'"h" : 5,'+
 		'"t" : 6}'+
 	'},' +
-'{"tempo": 120, "expression": "[bright]", "matchings": ["b", "r", "i", "g", "h", "t"], "numberOfMatches": 6},'+
+	'{"tempo": 59, "expression": "[bright]",' +
+		'"samplemap": {'+
+		'"A.1" : "./samples/bright/voice-1/b.mp3",'+
+		'"A.2" : "./samples/bright/voice-1/r.mp3",'+
+		'"A.3" : "./samples/bright/voice-1/i.mp3",'+
+		'"A.4" : "./samples/bright/voice-1/g.mp3",'+
+		'"A.5" : "./samples/bright/voice-1/h.mp3",'+
+		'"A.6" : "./samples/bright/voice-1/t.mp3",'+
+
+		'"B.1" : "./samples/bright/voice-2/b.mp3",'+
+		'"B.2" : "./samples/bright/voice-2/r.mp3",'+
+		'"B.3" : "./samples/bright/voice-2/i.mp3",'+
+		'"B.4" : "./samples/bright/voice-2/g.mp3",'+
+		'"B.5" : "./samples/bright/voice-2/h.mp3",'+
+		'"B.6" : "./samples/bright/voice-2/t.mp3",'+
+
+		'"C.1" : "./samples/bright/voice-3/b.mp3",'+
+		'"C.2" : "./samples/bright/voice-3/r.mp3",'+
+		'"C.3" : "./samples/bright/voice-3/i.mp3",'+
+		'"C.4" : "./samples/bright/voice-3/g.mp3",'+
+		'"C.5" : "./samples/bright/voice-3/h.mp3",'+
+		'"C.6" : "./samples/bright/voice-3/t.mp3",'+
+
+		'"D.1" : "./samples/bright/voice-4/b.mp3",'+
+		'"D.2" : "./samples/bright/voice-4/r.mp3",'+
+		'"D.3" : "./samples/bright/voice-4/i.mp3",'+
+		'"D.4" : "./samples/bright/voice-4/g.mp3",'+
+		'"D.5" : "./samples/bright/voice-4/h.mp3",'+
+		'"D.6" : "./samples/bright/voice-4/t.mp3",'+
+
+		'"E.1" : "./samples/bright/voice-5/b.mp3",'+
+		'"E.2" : "./samples/bright/voice-5/r.mp3",'+
+		'"E.3" : "./samples/bright/voice-5/i.mp3",'+
+		'"E.4" : "./samples/bright/voice-5/g.mp3",'+
+		'"E.5" : "./samples/bright/voice-5/h.mp3",'+
+		'"E.6" : "./samples/bright/voice-5/t.mp3",'+
+
+		'"F.1" : "./samples/bright/voice-6/b.mp3",'+
+		'"F.2" : "./samples/bright/voice-6/r.mp3",'+
+		'"F.3" : "./samples/bright/voice-6/i.mp3",'+
+		'"F.4" : "./samples/bright/voice-6/g.mp3",'+
+		'"F.5" : "./samples/bright/voice-6/h.mp3",'+
+		'"F.6" : "./samples/bright/voice-6/t.mp3"},'+
+
+		'"matchings": {'+
+			'"b" : 1,'+
+			'"r" : 2,'+
+			'"i" : 3,'+
+			'"g" : 4,'+
+			'"h" : 5,'+
+			'"t" : 6}'+
+		'},' +
 '{"tempo": 120, "expression": "[bright]", "matchings": ["b", "r", "i", "g", "h", "t"], "numberOfMatches": 6},'+
 '{"tempo": 120, "expression": "[bright]", "matchings": ["b", "r", "i", "g", "h", "t"], "numberOfMatches": 6}]';

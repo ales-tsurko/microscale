@@ -1,10 +1,16 @@
 $(function() {
-	var songsData = JSON.parse(data);
-	var sampler, samples, currentSongData;
-	var buffers = [],
-	samplerIDs = ["A", "B", "C", "D", "E", "F"];
-
 	var samplesFormat = Tone.Buffer.supportsType("mp3") ? "mp3" : "ogg";
+	var trackData = JSON.parse(data);
+	var numberOfTracks = 4;
+	var samplerIDs = ["A", "B", "C", "D", "E", "F"];
+
+	var Track = {};
+	Track.buffers = [];
+	Track.number = 1;
+	Track.sumOfBuffersPlayedTimes = 0;
+	Track.data = {};
+	Track.sampler = {};
+	Track.samples = {};
 
 	function Buffer(id, overlayID) {
 		this.size = 0;
@@ -18,6 +24,7 @@ $(function() {
 		this.previousParagraphLength = 0;
 		this.lastParagraphNumber = 0;
 		this.samplerID = "";
+		this.playedTimes = 0;
 	}
 
 	Buffer.colors = ["#F800B4", "#3CDE00", "#B5F300", "#F20026", "#000000"];
@@ -30,6 +37,7 @@ $(function() {
 	Buffer.prototype.highlightText = function () {
 		var output = "",
 		self = this;
+
 		this.position %= this.size;
 
 		// ______________________________________________
@@ -80,12 +88,12 @@ $(function() {
 
 		} else {
 			var highlightStr = self.map[self.position];
+
 			// playing sample
 
-			var sampleToPlay = self.samplerID + "." + currentSongData.matchings[highlightStr];
-			// console.log(sampleToPlay);
-			if (currentSongData.matchings[highlightStr] !== undefined) {
-				sampler.start(sampleToPlay);	
+			var sampleToPlay = self.samplerID + "." + Track.data.matchings[highlightStr];
+			if (Track.data.matchings[highlightStr] !== undefined) {
+				Track.sampler.start(sampleToPlay);
 			}
 
 			// showing highlight
@@ -194,38 +202,135 @@ $(function() {
 	/*--------------Sound engine--------------*/
 	////////////////////////////////////////////
 
-	// Buffer-1 scheduler
+	// Scheduler
 	Tone.Transport.scheduleRepeat(function() {
-		buffers.forEach(function(buf) {
+		Track.buffers.forEach(function(buf) {
 			if (buf.size > 0) {
 				buf.highlightText();
 				buf.position++;
+
+				if (buf.position === buf.size) {
+					buf.playedTimes++;
+					Track.sumOfBuffersPlayedTimes += buf.playedTimes;
+
+					// если все 6 буферов проиграли хотя бы по разу, то их общее
+					// число проигрываний будет больше или равно 6.
+					// Если общее число проигрываний больше или равно 6 – играть
+					// следуюший трек.
+					if (Track.sumOfBuffersPlayedTimes >= 6) {
+						//play next track
+						Track.didFinishedPlaying();
+					}
+				}
 			}
 		});
 	}, "1m", "0");
 
 	// Transport
-	function play() {
+	Track.play = function() {
 		Tone.Transport.start();
 		if (Tone.context.state === "suspended") {
 			Tone.context.resume();
 		}
-	}
+	};
 
-	function pause() {
+	Track.pause = function() {
 		Tone.Transport.pause();
-	}
+	};
 
-	function rewind() {
+	Track.rewind = function() {
 		Tone.Transport.position = "0:0:0";
-		buffers.forEach(function(buf) {
+		Track.buffers.forEach(function(buf) {
 			buf.position = 0;
 			buf.currentParagraphIndex = 0;
 			buf.previousParagraphLength = 0;
 			buf.lastParagraphNumber = 0;
 			buf.highlightText();
 		});
-	}
+	};
+
+	Track.didFinishedPlaying = function() {
+		Track.sumOfBuffersPlayedTimes = 0;
+
+		Track.number = Track.number > (numberOfTracks-1) ? 1 : ++Track.number ;
+		var strTrNum = ""+Track.number;
+
+		Track.didChangeTo(strTrNum, Track.play);
+
+		// view
+		$("#tracklist").children("li").removeClass("current-track");
+		$("#tracklist li:nth-child("+strTrNum+")").addClass("current-track");
+	};
+
+	Track.didChangeTo = function(track, buffersLoadingCallback) {
+		// Update buffers
+		Track.buffers.forEach(function(buf) {
+			buf.update();
+			buf.playedTimes = 0;
+		});
+
+		// Update expression
+		var expr = trackData[track-1].expression;
+		$("#expression-input").val(expr);
+		expressionDidUpdateWith(expr);
+
+		// Update tempo
+		Tone.Transport.bpm.value = trackData[track-1].tempo;
+
+		Track.data = trackData[track-1];
+
+		// Reset playing state
+		Track.pause();
+		Track.rewind();
+
+		// hide transport buttons and show buffers loading indicator
+		$("#play-button").hide();
+		$("#pause-button").hide();
+		$("#rewind-button").hide();
+		$("#loading-buffers-indicator").show();
+
+		switch (track) {
+			// !!!
+			// нужно в callback() каждого Tone.Buffers добавлять
+			// buffersLoadingCallback()
+			// !!!
+			case "1":
+			Track.samples = new Tone.Buffers(Track.data.samplemap, function() {
+				$("#play-button").show();
+				$("#rewind-button").show();
+				$("#loading-buffers-indicator").hide();
+				buffersLoadingCallback();
+			});
+			Track.sampler = new Tone.MultiPlayer(Track.samples).toMaster();
+
+			Track.number  = 1;
+			break;
+
+			case "2":
+			// Track.samples = new Tone.Buffers(Track.data.samplemap, function() {
+			// 	$("#play-button").show();
+			// 	$("#rewind-button").show();
+			// 	$("#loading-buffers-indicator").hide();
+			// 	buffersLoadingCallback();
+			// });
+			// Track.sampler = new Tone.MultiPlayer(Track.samples).toMaster();
+
+			Track.number  = 2;
+			break;
+
+			case "3":
+			Track.number  = 3;
+			break;
+
+			case "4":
+			Track.number  = 4;
+			break;
+
+			default: break;
+		}
+
+		// console.log(trackData[track-1]);
+	};
 
 	//////////////////////////////////////
 	/*----------------UI----------------*/
@@ -233,19 +338,19 @@ $(function() {
 
 	// Transport buttons
 	$("#play-button").click(function() {
-		play();
+		Track.play();
 		$(this).toggle();
 		$("#pause-button").toggle();
 	});
 
 	$("#pause-button").click(function() {
-		pause();
+		Track.pause();
 		$(this).toggle();
 		$("#play-button").toggle();
 	});
 
 	$("#rewind-button").mousedown(function() {
-		rewind();
+		Track.rewind();
 		$(this).toggle();
 		$("#rewind-button-mousedown").toggle();
 	});
@@ -269,7 +374,7 @@ $(function() {
 			$("#expression-input").val(Buffer.expression.source);
 		}
 
-		buffers.forEach(function(buf) {
+		Track.buffers.forEach(function(buf) {
 			buf.updateMatchings();
 		});
 	}
@@ -291,53 +396,8 @@ $(function() {
 		$("#tracklist").children("li").removeClass("current-track");
 		$(this).addClass("current-track");
 
-		trackDidChangeTo($(this).text());
+		Track.didChangeTo($(this).text(), function(){});
 	});
-
-	function trackDidChangeTo(track) {
-		// Update buffers
-		buffers.forEach(function(buf) {
-			buf.update();
-		});
-
-		// Update expression
-		var expr = songsData[track-1].expression;
-		$("#expression-input").val(expr);
-		expressionDidUpdateWith(expr);
-
-		// Update tempo
-		Tone.Transport.bpm.value = songsData[track-1].tempo;
-
-		currentSongData = songsData[track-1];
-
-		// Reset playing state
-		pause();
-		rewind();
-
-		// hide transport buttons and show buffers loading indicator
-		$("#play-button").hide();
-		$("#pause-button").hide();
-		$("#rewind-button").hide();
-		$("#loading-buffers-indicator").show();
-
-		switch (track) {
-			case "1":
-			samples = new Tone.Buffers(currentSongData.samplemap, function() {
-				$("#play-button").show();
-				$("#rewind-button").show();
-				$("#loading-buffers-indicator").hide();
-			});
-			sampler = new Tone.MultiPlayer(samples).toMaster();
-			break;
-
-			case "2":
-			break;
-
-			default: break;
-		}
-
-		// console.log(songsData[track-1]);
-	}
 
 	//-----------------
 	// INITIALIZATIONS
@@ -347,12 +407,12 @@ $(function() {
 	for (var i = 0; i < 6; i++) {
 		var newID = "#buffer-"+(i+1);
 		var newOverlayID = "#buffer-overlay-"+(i+1);
-		buffers[i] = new Buffer(newID, newOverlayID);
-		buffers[i].size = $(buffers[i].id).text().length;
-		buffers[i].samplerID = samplerIDs[i];
-		buffers[i].update();
+		Track.buffers[i] = new Buffer(newID, newOverlayID);
+		Track.buffers[i].size = $(Track.buffers[i].id).text().length;
+		Track.buffers[i].samplerID = samplerIDs[i];
+		Track.buffers[i].update();
 	}
 
 	// set track to first
-	trackDidChangeTo("1");
+	Track.didChangeTo("1", function(){});
 });
