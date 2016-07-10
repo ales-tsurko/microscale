@@ -84,7 +84,9 @@ $(function() {
 
 			var sampleToPlay = self.samplerID + "." + currentSongData.matchings[highlightStr];
 			// console.log(sampleToPlay);
-			sampler.start(sampleToPlay);
+			if (currentSongData.matchings[highlightStr] !== undefined) {
+				sampler.start(sampleToPlay);	
+			}
 
 			// showing highlight
 
