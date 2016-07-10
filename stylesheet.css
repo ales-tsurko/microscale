@@ -80,6 +80,12 @@ body {
 	float: left;
 }
 
+#loading-buffers-indicator {
+	display: none;
+	float: left;
+	cursor: auto;
+}
+
 #rewind-button {
 	margin-left: 42px;
 	float: left;

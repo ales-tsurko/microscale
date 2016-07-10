@@ -1,6 +1,10 @@
 $(function() {
 	var songsData = JSON.parse(data);
-	var sampler, currentSongData;
+	var sampler, samples, currentSongData;
+	var buffers = [],
+	samplerIDs = ["A", "B", "C", "D", "E", "F"];
+
+	var samplesFormat = Tone.Buffer.supportsType("mp3") ? "mp3" : "ogg";
 
 	function Buffer(id, overlayID) {
 		this.size = 0;
@@ -80,7 +84,7 @@ $(function() {
 
 			var sampleToPlay = self.samplerID + "." + currentSongData.matchings[highlightStr];
 			// console.log(sampleToPlay);
-			sampler.triggerAttack(sampleToPlay);
+			sampler.start(sampleToPlay);
 
 			// showing highlight
 
@@ -183,22 +187,6 @@ $(function() {
 			});
 		});
 	};
-
-	/////////////////////////////////
-	// Buffers array initialization
-	/////////////////////////////////
-
-	var buffers = [],
-	samplerIDs = ["A", "B", "C", "D", "E", "F"];
-
-	for (var i = 0; i < 6; i++) {
-		var newID = "#buffer-"+(i+1);
-		var newOverlayID = "#buffer-overlay-"+(i+1);
-		buffers[i] = new Buffer(newID, newOverlayID);
-		buffers[i].size = $(buffers[i].id).text().length;
-		buffers[i].samplerID = samplerIDs[i];
-		buffers[i].update();
-	}
 
 	////////////////////////////////////////////
 	/*--------------Sound engine--------------*/
@@ -313,10 +301,24 @@ $(function() {
 
 		currentSongData = songsData[track-1];
 
+		// Reset playing state
+		pause();
+		rewind();
+
+		// hide transport buttons and show buffers loading indicator
+		$("#play-button").hide();
+		$("#pause-button").hide();
+		$("#rewind-button").hide();
+		$("#loading-buffers-indicator").show();
+
 		switch (track) {
 			case 1:
-			sampler = new Tone.Sampler(currentSongData.samplemap).toMaster();
-			sampler.volume.value = -9;
+			samples = new Tone.Buffers(currentSongData.samplemap, function() {
+				$("#play-button").show();
+				$("#rewind-button").show();
+				$("#loading-buffers-indicator").hide();
+			});
+			sampler = new Tone.MultiPlayer(samples).toMaster();
 			break;
 
 			case 2:
@@ -334,7 +336,30 @@ $(function() {
 
 		trackDidChangeTo($(this).text());
 	});
+	//
+	// Tone.Buffer.onload = function() {
+	// 	console.log("all the buffers is loaded");
+	// };
+	//
+	// Tone.Buffer.onprogress = function() {
+	// 	console.log("loading audio buffers");
+	// };
 
-	// initialization
+
+	//-----------------
+	// INITIALIZATIONS
+	//-----------------
+
+	// buffers
+	for (var i = 0; i < 6; i++) {
+		var newID = "#buffer-"+(i+1);
+		var newOverlayID = "#buffer-overlay-"+(i+1);
+		buffers[i] = new Buffer(newID, newOverlayID);
+		buffers[i].size = $(buffers[i].id).text().length;
+		buffers[i].samplerID = samplerIDs[i];
+		buffers[i].update();
+	}
+
+	// set track to first
 	trackDidChangeTo(1);
 });
