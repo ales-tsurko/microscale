@@ -105,23 +105,23 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 		'"#buffer-3" : {'+
 			'"event" : {},'+
 			'"isLoop" : false,'+
-			'"eventLength" : "2m",'+
+			'"eventLength" : "4m",'+
 			'"shouldPauseEventOnMatch" : true,'+
 			'"pauseLength" : 8'+ // if shouldPauseEventOnMatch this property is number of measures
 		'},'+
 		'"#buffer-4" : {'+
 			'"event" : {},'+
 			'"isLoop" : false,'+
-			'"eventLength" : "1m",'+
+			'"eventLength" : "2m",'+
 			'"shouldPauseEventOnMatch" : true,'+
-			'"pauseLength" : 8'+ // if shouldPauseEventOnMatch this property is number of measures
+			'"pauseLength" : 8'+
 		'},'+
 		'"#buffer-5" : {'+
 			'"event" : {},'+
 			'"isLoop" : false,'+
-			'"eventLength" : "1n",'+
+			'"eventLength" : "1m",'+
 			'"shouldPauseEventOnMatch" : true,'+
-			'"pauseLength" : 8'+ // if shouldPauseEventOnMatch this property is number of measures
+			'"pauseLength" : 8'+
 		'},'+
 		'"#buffer-6" : {'+
 			'"event" : {},'+

@@ -327,7 +327,6 @@ $(function() {
 		$("#rewind-button").hide();
 		$("#loading-buffers-indicator").show();
 		
-		
 		// Cleanup timeline from events
 		Tone.Transport.cancel(0);
 		
