@@ -112,14 +112,14 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 		'"#buffer-4" : {'+
 			'"event" : {},'+
 			'"isLoop" : false,'+
-			'"eventLength" : "2m",'+
+			'"eventLength" : "2n",'+
 			'"shouldPauseEventOnMatch" : true,'+
 			'"pauseLength" : 8'+
 		'},'+
 		'"#buffer-5" : {'+
 			'"event" : {},'+
 			'"isLoop" : false,'+
-			'"eventLength" : "1m",'+
+			'"eventLength" : "4n",'+
 			'"shouldPauseEventOnMatch" : true,'+
 			'"pauseLength" : 8'+
 		'},'+
