@@ -1,4 +1,28 @@
 data = '[{"tempo": 59, "expression": "[bright]",' +
+	'"#buffer-1" : {'+
+		'"isLoop" : false,'+
+		'"eventLength" : "1m"'+
+	'},'+
+	'"#buffer-2" : {'+
+		'"isLoop" : false,'+
+		'"eventLength" : "1m"'+
+	'},'+
+	'"#buffer-3" : {'+
+		'"isLoop" : false,'+
+		'"eventLength" : "1m"'+
+	'},'+
+	'"#buffer-4" : {'+
+		'"isLoop" : false,'+
+		'"eventLength" : "1m"'+
+	'},'+
+	'"#buffer-5" : {'+
+		'"isLoop" : false,'+
+		'"eventLength" : "1m"'+
+	'},'+
+	'"#buffer-6" : {'+
+		'"isLoop" : false,'+
+		'"eventLength" : "1m"'+
+	'},'+
 	'"samplemap": {'+
 	'"#buffer-1.1" : "./samples/bright/voice-1/b.mp3",'+
 	'"#buffer-1.2" : "./samples/bright/voice-1/r.mp3",'+
@@ -51,6 +75,34 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 		'"t" : 6}'+
 	'},' +
 	'{"tempo": 106, "expression": "[pulsar]",' +
+		'"#buffer-1" : {'+
+			'"isLoop" : true,'+
+			'"eventLength" : "8m",'+
+			'"initialSampleID" : "#buffer-1.1"'+
+		'},'+
+		'"#buffer-2" : {'+
+			'"isLoop" : true,'+
+			'"eventLength" : "2m",'+
+			'"initialSampleID" : "#buffer-2.1"'+
+		'},'+
+		'"#buffer-3" : {'+
+			'"isLoop" : false,'+
+			'"eventLength" : "8m"'+
+		'},'+
+		'"#buffer-4" : {'+
+			'"isLoop" : false,'+
+			'"eventLength" : "8m"'+
+		'},'+
+		'"#buffer-5" : {'+
+			'"isLoop" : false,'+
+			'"eventLength" : "4m"'+
+		'},'+
+		'"#buffer-6" : {'+
+			'"isLoop" : true,'+
+			'"eventLength" : "4m",'+
+			'"initialSampleID" : "#buffer-6.1"'+
+		'},'+
+	
 		'"samplemap": {'+
 		'"#buffer-1.1" : "./samples/pulsar/voice-1/p.mp3",'+
 		'"#buffer-1.2" : "./samples/pulsar/voice-1/u.mp3",'+

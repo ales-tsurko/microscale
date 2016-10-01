@@ -6,7 +6,7 @@ $(function() {
 	// Player responsible for loading a track data and playing events.
 	var Player = {};
 	Player.buffers = [];
-	Player.number = 1;
+	Player.trackNumber = 1;
 	Player.sumOfBuffersPlayedTimes = 0;
 	Player.data = {};
 	Player.sampler = {};
@@ -258,8 +258,8 @@ $(function() {
 	Player.didFinishedPlayingTrack = function() {
 		Player.sumOfBuffersPlayedTimes = 0;
 
-		Player.number = Player.number > (numberOfTracks-1) ? 1 : ++Player.number ;
-		var strTrNum = ""+Player.number;
+		Player.trackNumber = Player.trackNumber > (numberOfTracks-1) ? 1 : ++Player.trackNumber ;
+		var strTrNum = ""+Player.trackNumber;
 
 		Player.willPlayTrack(strTrNum, Player.play);
 
@@ -274,7 +274,10 @@ $(function() {
 		// playing sample
 		var sampleToPlay = buf.id + "." + this.data.matchings[highlightStr];
 		if (this.data.matchings[highlightStr] !== undefined) {
+			this.data[buf.id].initialSampleID = sampleToPlay;
 			this.sampler.start(sampleToPlay);
+		} else if (this.data[buf.id].isLoop) {
+			this.sampler.start(this.data[buf.id].initialSampleID);
 		}
 	}
 	
@@ -292,6 +295,9 @@ $(function() {
 
 		// Update tempo
 		Tone.Transport.bpm.value = trackData[track-1].tempo;
+		
+		// Set track number
+		Player.trackNumber = track;
 		
 		// Set data
 		Player.data = trackData[track-1];
@@ -321,46 +327,13 @@ $(function() {
 		// Init a sampler with a new bank
 		Player.sampler = new Tone.MultiPlayer(Player.samples).toMaster();
 		
-		// Switch tracks
-		switch (track) {
-			case "1":
-			
-			// Schedule events
-			Tone.Transport.scheduleRepeat(function() {
-				Player.buffers.forEach(function(buf) {
-					buf.updatePosition();
-				});
-			}, "1m", "0");
-			
-			// Set track number
-			Player.number  = 1;
-			
-			break;
-
-			case "2":
-			
-			// Init events
-			var kickLoop = new Tone.Loop(function() {
-				Player.buffers[5].updatePosition();
-			}, "4m").start(0);
-			
-			// Set track number
-			Player.number  = 2;
-			
-			break;
-
-			case "3":
-			Player.number  = 3;
-			break;
-
-			case "4":
-			Player.number  = 4;
-			break;
-
-			default: break;
-		}
-
-		// console.log(trackData[track-1]);
+		// Schedule events
+		var event;
+		Player.buffers.forEach(function(buf) {
+			event = new Tone.Loop(function() {
+				buf.updatePosition();
+			}, Player.data[buf.id].eventLength).start(0);
+		});
 	};
 
 	//////////////////////////////////////
