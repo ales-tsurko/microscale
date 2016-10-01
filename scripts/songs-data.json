@@ -1,28 +1,41 @@
 data = '[{"tempo": 59, "expression": "[bright]",' +
 	'"#buffer-1" : {'+
+		'"event" : {},'+
 		'"isLoop" : false,'+
-		'"eventLength" : "1m"'+
+		'"eventLength" : "1m",'+
+		'"shouldPauseEventOnMatch" : false'+
 	'},'+
 	'"#buffer-2" : {'+
+		'"event" : {},'+
 		'"isLoop" : false,'+
-		'"eventLength" : "1m"'+
+		'"eventLength" : "1m",'+
+		'"shouldPauseEventOnMatch" : false'+
 	'},'+
 	'"#buffer-3" : {'+
+		'"event" : {},'+
 		'"isLoop" : false,'+
-		'"eventLength" : "1m"'+
+		'"eventLength" : "1m",'+
+		'"shouldPauseEventOnMatch" : false'+
 	'},'+
 	'"#buffer-4" : {'+
+		'"event" : {},'+
 		'"isLoop" : false,'+
-		'"eventLength" : "1m"'+
+		'"eventLength" : "1m",'+
+		'"shouldPauseEventOnMatch" : false'+
 	'},'+
 	'"#buffer-5" : {'+
+		'"event" : {},'+
 		'"isLoop" : false,'+
-		'"eventLength" : "1m"'+
+		'"eventLength" : "1m",'+
+		'"shouldPauseEventOnMatch" : false'+
 	'},'+
 	'"#buffer-6" : {'+
+		'"event" : {},'+
 		'"isLoop" : false,'+
-		'"eventLength" : "1m"'+
+		'"eventLength" : "1m",'+
+		'"shouldPauseEventOnMatch" : false'+
 	'},'+
+	
 	'"samplemap": {'+
 	'"#buffer-1.1" : "./samples/bright/voice-1/b.mp3",'+
 	'"#buffer-1.2" : "./samples/bright/voice-1/r.mp3",'+
@@ -76,31 +89,46 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 	'},' +
 	'{"tempo": 106, "expression": "[pulsar]",' +
 		'"#buffer-1" : {'+
+			'"event" : {},'+
 			'"isLoop" : true,'+
 			'"eventLength" : "8m",'+
-			'"initialSampleID" : "#buffer-1.1"'+
+			'"initialSampleID" : "#buffer-1.6",'+
+			'"shouldPauseEventOnMatch" : false'+
 		'},'+
 		'"#buffer-2" : {'+
+			'"event" : {},'+
 			'"isLoop" : true,'+
 			'"eventLength" : "2m",'+
-			'"initialSampleID" : "#buffer-2.1"'+
+			'"initialSampleID" : "#buffer-2.1",'+
+			'"shouldPauseEventOnMatch" : false'+
 		'},'+
 		'"#buffer-3" : {'+
+			'"event" : {},'+
 			'"isLoop" : false,'+
-			'"eventLength" : "8m"'+
+			'"eventLength" : "2m",'+
+			'"shouldPauseEventOnMatch" : true,'+
+			'"pauseLength" : 8'+ // if shouldPauseEventOnMatch this property is number of measures
 		'},'+
 		'"#buffer-4" : {'+
+			'"event" : {},'+
 			'"isLoop" : false,'+
-			'"eventLength" : "8m"'+
+			'"eventLength" : "1m",'+
+			'"shouldPauseEventOnMatch" : true,'+
+			'"pauseLength" : 8'+ // if shouldPauseEventOnMatch this property is number of measures
 		'},'+
 		'"#buffer-5" : {'+
+			'"event" : {},'+
 			'"isLoop" : false,'+
-			'"eventLength" : "4m"'+
+			'"eventLength" : "1n",'+
+			'"shouldPauseEventOnMatch" : true,'+
+			'"pauseLength" : 8'+ // if shouldPauseEventOnMatch this property is number of measures
 		'},'+
 		'"#buffer-6" : {'+
+			'"event" : {},'+
 			'"isLoop" : true,'+
 			'"eventLength" : "4m",'+
-			'"initialSampleID" : "#buffer-6.1"'+
+			'"initialSampleID" : "#buffer-6.1",'+
+			'"shouldPauseEventOnMatch" : false'+
 		'},'+
 	
 		'"samplemap": {'+

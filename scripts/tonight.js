@@ -276,10 +276,25 @@ $(function() {
 		if (this.data.matchings[highlightStr] !== undefined) {
 			this.data[buf.id].initialSampleID = sampleToPlay;
 			this.sampler.start(sampleToPlay);
+			
+			// pause if event should be paused on matched
+			if (this.data[buf.id].shouldPauseEventOnMatch) {
+				// stop event
+				this.data[buf.id].event.stop();
+				
+				// calculate when event should return
+				var currentBar = parseInt(Tone.Transport.position.split(':')[0]);
+				var newStartingPosition = currentBar + this.data[buf.id].pauseLength + 'm';
+				
+				// schedule event to new position
+				this.data[buf.id].event.start(newStartingPosition);
+			}
+			
 		} else if (this.data[buf.id].isLoop) {
+			// if isLoop play the same sample or the initial
 			this.sampler.start(this.data[buf.id].initialSampleID);
 		}
-	}
+	};
 	
 	Player.willPlayTrack = function(track, buffersLoadingCallback) {
 		// Update buffers
@@ -328,9 +343,8 @@ $(function() {
 		Player.sampler = new Tone.MultiPlayer(Player.samples).toMaster();
 		
 		// Schedule events
-		var event;
 		Player.buffers.forEach(function(buf) {
-			event = new Tone.Loop(function() {
+			Player.data[buf.id].event = new Tone.Loop(function() {
 				buf.updatePosition();
 			}, Player.data[buf.id].eventLength).start(0);
 		});
