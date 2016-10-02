@@ -7,7 +7,6 @@ $(function() {
 	var Player = {};
 	Player.buffers = [];
 	Player.trackNumber = 1;
-	Player.sumOfBuffersPlayedTimes = 0;
 	Player.data = {};
 	Player.sampler = {};
 	Player.samples = {};
@@ -26,7 +25,7 @@ $(function() {
 		this.previousParagraphLength = 0;
 		this.lastParagraphNumber = 0;
 		this.samplerID = "";
-		this.playedTimes = 0;
+		this.isPlayed = false;
 	}
 
 	Buffer.colors = ["#F800B4", "#3CDE00", "#B5F300", "#F20026", "#000000"];
@@ -136,21 +135,16 @@ $(function() {
 			self.position++;
 
 			if (self.position === self.size) {
-				self.playedTimes++;
-				Player.sumOfBuffersPlayedTimes += self.playedTimes;
+				// обозначение буфера как воспроизведенного
+				self.isPlayed = true;
 				
-				// FIXME: если будет один из буферов очень короткий и
-				// проиграет 6 раз, пока другие не проиграют ни разу? Или
-				// это работает иначе? Можно просто изменить количество
-				// раз на isPlayed<Boolean>. И при первом же проигрывании
-				// оно будет установлен в true. А когда все буферы 
-				// isPlayed == true — переключать трек.
+				// поиск невоспроизведенного целиком буфера в массиве буферов
+				var didFoundNotPlayedBuffer = Player.buffers.find(function(item) {
+					return !item.isPlayed;
+				});
 				
-				// если все 6 буферов проиграли хотя бы по разу, то их общее
-				// число проигрываний будет больше или равно 6.
-				// Если общее число проигрываний больше или равно 6 – играть
-				// следуюший трек.
-				if (Player.sumOfBuffersPlayedTimes >= 6) {
+				// запуск следующего трека, если все буферы проиграли хотя бы по разу
+				if (didFoundNotPlayedBuffer === undefined) {
 					//play next track
 					Player.didFinishedPlayingTrack();
 				}
@@ -256,8 +250,6 @@ $(function() {
 	};
 
 	Player.didFinishedPlayingTrack = function() {
-		Player.sumOfBuffersPlayedTimes = 0;
-
 		Player.trackNumber = Player.trackNumber > (numberOfTracks-1) ? 1 : ++Player.trackNumber ;
 		var strTrNum = ""+Player.trackNumber;
 
@@ -291,7 +283,7 @@ $(function() {
 			}
 			
 		} else if (this.data[buf.id].isLoop) {
-			// if isLoop play the same sample or the initial
+			// if isLoop play the same sample or the initial one
 			this.sampler.start(this.data[buf.id].initialSampleID);
 		}
 	};
@@ -300,7 +292,7 @@ $(function() {
 		// Update buffers
 		Player.buffers.forEach(function(buf) {
 			buf.update();
-			buf.playedTimes = 0;
+			buf.isPlayed = false;
 		});
 
 		// Update expression

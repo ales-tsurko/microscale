@@ -107,7 +107,7 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 			'"isLoop" : false,'+
 			'"eventLength" : "4m",'+
 			'"shouldPauseEventOnMatch" : true,'+
-			'"pauseLength" : 8'+ // if shouldPauseEventOnMatch this property is number of measures
+			'"pauseLength" : 8'+ // if shouldPauseEventOnMatch is true this property is the pause's number of measures
 		'},'+
 		'"#buffer-4" : {'+
 			'"event" : {},'+
