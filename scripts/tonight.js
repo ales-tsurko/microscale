@@ -240,13 +240,23 @@ $(function() {
 
 	Player.rewind = function() {
 		Tone.Transport.position = "0:0:0";
+		
+		// reset buffers
 		Player.buffers.forEach(function(buf) {
+			buf.isPlayed = false
 			buf.position = 0;
 			buf.currentParagraphIndex = 0;
 			buf.previousParagraphLength = 0;
 			buf.lastParagraphNumber = 0;
 			buf.highlightText();
 		});
+		
+		Player.updateScheduler();
+		
+		// stop all playing sounds
+		if (Player.sampler instanceof Tone.MultiPlayer) {
+			Player.sampler.stopAll(0);
+		}
 	};
 
 	Player.didFinishedPlayingTrack = function() {
@@ -288,6 +298,19 @@ $(function() {
 		}
 	};
 	
+	/// Cancel all previously scheduled events and schedule new
+	Player.updateScheduler = function() {
+		// Cleanup timeline from events
+		Tone.Transport.cancel(0);
+		
+		// Schedule events
+		Player.buffers.forEach(function(buf) {
+			Player.data[buf.id].event = new Tone.Loop(function() {
+				buf.updatePosition();
+			}, Player.data[buf.id].eventLength).start(0);
+		});
+	}
+	
 	Player.willPlayTrack = function(track, buffersLoadingCallback) {
 		// Update buffers
 		Player.buffers.forEach(function(buf) {
@@ -319,9 +342,6 @@ $(function() {
 		$("#rewind-button").hide();
 		$("#loading-buffers-indicator").show();
 		
-		// Cleanup timeline from events
-		Tone.Transport.cancel(0);
-		
 		// Load samples bank
 		Player.samples = new Tone.Buffers(Player.data.samplemap, function() {
 			$("#play-button").show();
@@ -333,12 +353,7 @@ $(function() {
 		// Init a sampler with a new bank
 		Player.sampler = new Tone.MultiPlayer(Player.samples).toMaster();
 		
-		// Schedule events
-		Player.buffers.forEach(function(buf) {
-			Player.data[buf.id].event = new Tone.Loop(function() {
-				buf.updatePosition();
-			}, Player.data[buf.id].eventLength).start(0);
-		});
+		Player.updateScheduler();
 	};
 
 	//////////////////////////////////////
