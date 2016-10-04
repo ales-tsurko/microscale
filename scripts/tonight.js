@@ -24,7 +24,6 @@ $(function() {
 		this.currentParagraphIndex = 0;
 		this.previousParagraphLength = 0;
 		this.lastParagraphNumber = 0;
-		this.samplerID = "";
 		this.isPlayed = false;
 	}
 
