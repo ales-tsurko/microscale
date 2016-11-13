@@ -197,14 +197,14 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 			'"isLoop" : false,'+
 			'"eventLength" : "2m",'+
 			'"shouldPauseEventOnMatch" : true,'+
-			'"pauseLength" : 16'+ // if shouldPauseEventOnMatch is true this property is the number of measures for pause
+			'"pauseLength" : 8'+ // if shouldPauseEventOnMatch is true this property is the number of measures for pause
 		'},'+
 		'"#buffer-2" : {'+
 			'"event" : {},'+
 			'"isLoop" : false,'+
 			'"eventLength" : "2m",'+
 			'"shouldPauseEventOnMatch" : true,'+
-			'"pauseLength" : 16'+ // if shouldPauseEventOnMatch is true this property is the number of measures for pause
+			'"pauseLength" : 12'+ // if shouldPauseEventOnMatch is true this property is the number of measures for pause
 		'},'+
 		'"#buffer-3" : {'+
 			'"event" : {},'+
@@ -223,14 +223,14 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 		'"#buffer-5" : {'+
 			'"event" : {},'+
 			'"isLoop" : false,'+
-			'"eventLength" : "1m",'+
+			'"eventLength" : "4n",'+
 			'"shouldPauseEventOnMatch" : true,'+
-			'"pauseLength" : 8'+
+			'"pauseLength" : 12'+
 		'},'+
 		'"#buffer-6" : {'+
 			'"event" : {},'+
 			'"isLoop" : false,'+
-			'"eventLength" : "4m",'+
+			'"eventLength" : "1m",'+
 			'"shouldPauseEventOnMatch" : true,'+
 			'"pauseLength" : 8'+ // if shouldPauseEventOnMatch is true this property is the number of measures for pause
 		'},'+
