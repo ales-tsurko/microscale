@@ -35,7 +35,7 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 		'"eventLength" : "1m",'+
 		'"shouldPauseEventOnMatch" : false'+
 	'},'+
-	
+
 	'"samplemap": {'+
 	'"#buffer-1.1" : "./samples/bright/voice-1/b.mp3",'+
 	'"#buffer-1.2" : "./samples/bright/voice-1/r.mp3",'+
@@ -87,6 +87,10 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 		'"h" : 5,'+
 		'"t" : 6}'+
 	'},' +
+
+
+
+
 	'{"tempo": 106, "expression": "[sirena]",' +
 		'"#buffer-1" : {'+
 			'"event" : {},'+
@@ -181,6 +185,106 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 			'"e" : 4,'+
 			'"n" : 5,'+
 			'"a" : 6}'+
+		'},' +
+
+
+
+
+
+	'{"tempo": 63, "expression": "[module]",' +
+		'"#buffer-1" : {'+
+			'"event" : {},'+
+			'"isLoop" : false,'+
+			'"eventLength" : "4m",'+
+			'"shouldPauseEventOnMatch" : true,'+
+			'"pauseLength" : 16'+ // if shouldPauseEventOnMatch is true this property is the number of measures for pause
+		'},'+
+		'"#buffer-2" : {'+
+			'"event" : {},'+
+			'"isLoop" : false,'+
+			'"eventLength" : "4m",'+
+			'"shouldPauseEventOnMatch" : true,'+
+			'"pauseLength" : 16'+ // if shouldPauseEventOnMatch is true this property is the number of measures for pause
+		'},'+
+		'"#buffer-3" : {'+
+			'"event" : {},'+
+			'"isLoop" : false,'+
+			'"eventLength" : "2n",'+
+			'"shouldPauseEventOnMatch" : true,'+
+			'"pauseLength" : 8'+ // if shouldPauseEventOnMatch is true this property is the number of measures for pause
+		'},'+
+		'"#buffer-4" : {'+
+			'"event" : {},'+
+			'"isLoop" : false,'+
+			'"eventLength" : "2n",'+
+			'"shouldPauseEventOnMatch" : true,'+
+			'"pauseLength" : 8'+
+		'},'+
+		'"#buffer-5" : {'+
+			'"event" : {},'+
+			'"isLoop" : false,'+
+			'"eventLength" : "1m",'+
+			'"shouldPauseEventOnMatch" : true,'+
+			'"pauseLength" : 8'+
+		'},'+
+		'"#buffer-6" : {'+
+			'"event" : {},'+
+			'"isLoop" : false,'+
+			'"eventLength" : "2m",'+
+			'"shouldPauseEventOnMatch" : true,'+
+			'"pauseLength" : 8'+ // if shouldPauseEventOnMatch is true this property is the number of measures for pause
+		'},'+
+
+		'"samplemap": {'+
+		'"#buffer-1.1" : "./samples/module/voice-1/m.mp3",'+
+		'"#buffer-1.2" : "./samples/module/voice-1/o.mp3",'+
+		'"#buffer-1.3" : "./samples/module/voice-1/d.mp3",'+
+		'"#buffer-1.4" : "./samples/module/voice-1/u.mp3",'+
+		'"#buffer-1.5" : "./samples/module/voice-1/l.mp3",'+
+		'"#buffer-1.6" : "./samples/module/voice-1/e.mp3",'+
+
+		'"#buffer-2.1" : "./samples/module/voice-2/m.mp3",'+
+		'"#buffer-2.2" : "./samples/module/voice-2/o.mp3",'+
+		'"#buffer-2.3" : "./samples/module/voice-2/d.mp3",'+
+		'"#buffer-2.4" : "./samples/module/voice-2/u.mp3",'+
+		'"#buffer-2.5" : "./samples/module/voice-2/l.mp3",'+
+		'"#buffer-2.6" : "./samples/module/voice-2/e.mp3",'+
+
+		'"#buffer-3.1" : "./samples/module/voice-3/m.mp3",'+
+		'"#buffer-3.2" : "./samples/module/voice-3/o.mp3",'+
+		'"#buffer-3.3" : "./samples/module/voice-3/d.mp3",'+
+		'"#buffer-3.4" : "./samples/module/voice-3/u.mp3",'+
+		'"#buffer-3.5" : "./samples/module/voice-3/l.mp3",'+
+		'"#buffer-3.6" : "./samples/module/voice-3/e.mp3",'+
+
+		'"#buffer-4.1" : "./samples/module/voice-4/m.mp3",'+
+		'"#buffer-4.2" : "./samples/module/voice-4/o.mp3",'+
+		'"#buffer-4.3" : "./samples/module/voice-4/d.mp3",'+
+		'"#buffer-4.4" : "./samples/module/voice-4/u.mp3",'+
+		'"#buffer-4.5" : "./samples/module/voice-4/l.mp3",'+
+		'"#buffer-4.6" : "./samples/module/voice-4/e.mp3",'+
+
+		'"#buffer-5.1" : "./samples/module/voice-5/m.mp3",'+
+		'"#buffer-5.2" : "./samples/module/voice-5/o.mp3",'+
+		'"#buffer-5.3" : "./samples/module/voice-5/d.mp3",'+
+		'"#buffer-5.4" : "./samples/module/voice-5/u.mp3",'+
+		'"#buffer-5.5" : "./samples/module/voice-5/l.mp3",'+
+		'"#buffer-5.6" : "./samples/module/voice-5/e.mp3",'+
+
+		'"#buffer-6.1" : "./samples/module/voice-6/m.mp3",'+
+		'"#buffer-6.2" : "./samples/module/voice-6/o.mp3",'+
+		'"#buffer-6.3" : "./samples/module/voice-6/d.mp3",'+
+		'"#buffer-6.4" : "./samples/module/voice-6/u.mp3",'+
+		'"#buffer-6.5" : "./samples/module/voice-6/l.mp3",'+
+		'"#buffer-6.6" : "./samples/module/voice-6/e.mp3"},'+
+
+		'"matchings": {'+
+			'"m" : 1,'+
+			'"o" : 2,'+
+			'"d" : 3,'+
+			'"u" : 4,'+
+			'"l" : 5,'+
+			'"e" : 6}'+
 		'},' +
 '{"tempo": 120, "expression": "[bright]", "matchings": ["b", "r", "i", "g", "h", "t"], "numberOfMatches": 6},'+
 '{"tempo": 120, "expression": "[bright]", "matchings": ["b", "r", "i", "g", "h", "t"], "numberOfMatches": 6}]';
