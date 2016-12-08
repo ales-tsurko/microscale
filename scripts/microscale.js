@@ -149,7 +149,7 @@ $(function() {
 				}
 			}
 		}
-	}
+	};
 
 	//////////////////////////////////////////////////////////////
 	// Updates matchings in text using new expression as argument
@@ -170,19 +170,13 @@ $(function() {
 	/////////////////////////////////////////////////////////////////
 	// Downloads new text from wikipedia and reloads buffer content
 	/////////////////////////////////////////////////////////////////
+  Buffer.prototype.update = function() {
+    var self = this;
+    var buffNum = parseInt(this.id.slice(-1)) - 1;
 
-	Buffer.prototype.update = function() {
-		var self = this;
-		var buffNum = parseInt(this.id.slice(-1)) - 1;
-
-		// here showing loading indicator
-		$("#load-indic-buf-"+(buffNum+1)).show();
+    // showing loading indicator
+    $("#load-indic-buf-"+(buffNum+1)).show();
 		$("#load-indic-div-"+(buffNum+1)).css("z-index", 150);
-
-		$.ajaxSetup({
-			scriptCharset: "utf-8", //or "ISO-8859-1"
-			contentType: "application/json; charset=utf-8"
-		});
 
 		$.getJSON('http://whateverorigin.org/get?url=' +
 		encodeURIComponent('https://en.wikipedia.org/wiki/Special:Random') + '&callback=?',
@@ -242,7 +236,7 @@ $(function() {
 		
 		// reset buffers
 		Player.buffers.forEach(function(buf) {
-			buf.isPlayed = false
+			buf.isPlayed = false;
 			buf.position = 0;
 			buf.currentParagraphIndex = 0;
 			buf.previousParagraphLength = 0;
@@ -308,7 +302,7 @@ $(function() {
 				buf.updatePosition();
 			}, Player.data[buf.id].eventLength).start(0);
 		});
-	}
+	};
 	
 	Player.willPlayTrack = function(track, buffersLoadingCallback) {
 		// Update buffers
