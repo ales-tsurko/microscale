@@ -210,6 +210,7 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 			'"event" : {},'+
 			'"isLoop" : false,'+
 			'"eventLength" : "2n",'+
+			'"initialSampleID" : "#buffer-3.1",'+
 			'"shouldPauseEventOnMatch" : true,'+
 			'"pauseLength" : 8'+ // if shouldPauseEventOnMatch is true this property is the number of measures for pause
 		'},'+
@@ -217,6 +218,7 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 			'"event" : {},'+
 			'"isLoop" : false,'+
 			'"eventLength" : "2n",'+
+			'"initialSampleID" : "#buffer-4.1",'+
 			'"shouldPauseEventOnMatch" : true,'+
 			'"pauseLength" : 8'+
 		'},'+
