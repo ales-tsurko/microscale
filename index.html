@@ -4,7 +4,7 @@
    <meta charset="utf-8"/>
    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-   <!-- <meta name="description" content="" /> -->
+   <meta name="description" content="microscale is an album from random Wikipedia articles, written by Ales Tsurko" />
 
    <meta property="og:title" content="microscale" />
    <meta property="og:url" content="http://alestsurko.by/microscale" />
@@ -25,7 +25,6 @@
    <script type="text/javascript"></script>
    <div id="main-container">
       <div id="input-container" style="display:block;width: 98%; margin:auto;vertical-align:top">
-          <!-- <div style="display:inline-block;font-family: 'Roboto Slab', Georgia, serif;border:0;margin:0;padding:0;font-size: 65px; color: black;width:5%">&gt;</div> -->
          <input id="expression-input" type="text" name="name" value="microscale" spellcheck="false">
       </div>
       <div id="transport-container">
@@ -76,81 +75,18 @@
 
       <div id="bottom-container">
          <div style="display:inline-block;position:absolute;width:100%;bottom:7%;text-align:right;font-size:10px;z-index:50">
-            <span id="wtf-open-button" style="margin-right:1%;color:white;background-color:#3CDE00;cursor: pointer">&nbsp;wtf?&nbsp;</span>
             <a href="http://alestsurko.by" target="_blank"><span style="margin-right:1%;color:white;background-color:black;">&nbsp;&copy; 2016 Aliaksandr Tsurko&nbsp;</span></a>
          </div>
          <div id="map-container">
             <ul>
                <br>
-               <li>a - unt.mp3/.ogg</li>
-               <li>b - asd.mp3/.ogg</li>
-               <li>c - tr.mp3/.ogg</li>
-               <li>e - tre.mp3/.ogg</li>
-               <li>f - unt.mp3/.ogg</li>
-               <li>g - asd.mp3/.ogg</li>
-               <li>h - trrer.mp3/.ogg</li>
-               <li>i - tre.mp3/.ogg</li>
-               <li>j - unte.mp3/.ogg</li>
-               <li>k - asdtetr.mp3/.ogg</li>
-               <li>l - trq.mp3/.ogg</li>
-               <li>m - trew.mp3/.ogg</li>
+               <li>microscale is music from random wikipedia articles</li>
             </ul>
          </div>
       </div>
    </div>
 
 
-   <!-- wtf? view -->
-   <div id="wtf-container" style="display:none">
-      <div id="wtf-close-button" style="display:block; position:absolute; margin-left:1%; font-size:40px; top:0.5%; cursor:pointer;">&times;</div>
-      <div id="wtf-info-container">
-         <div style="background-color:#3CDE00;border-color:#3CDE00">
-            microscale is an interactive album and instrument made by Ales Tsurko.
-            microscale uses random texts from Wikipedia and regular expressions
-            to generate music.
-            <br><br>
-            The album called “microscale” because of the pattern matchings that
-            are meaning's microscale level. Music is generating from this small
-            pieces of text. The pieces form not only new meaning (the musical
-            form), but another form of existence.
-         </div>
-         <div style="background-color:black;border-color:black"></div>
-         <div style="border-color:white"></div>
-         <div style="background-color:#F800B4;border-color:#F800B4;display:inline-block">
-            First of all it's a musical piece that you can just listen. The
-            music which borns right in front of you. But it's also open for
-            interpretation, so bellow is instructions for those, who wants to
-            create his own version (or to perform microscale live).
-            <br><br>
-            microscale uses regular expressions to find matchings in the text
-            buffers, which are randomly chosen articles from Wikipedia.
-            If you don't familiar with regular expressions,
-            <a href="http://regexone.com" target="_blank">here</a> is a
-            short course.
-            <br><br>
-            You can choose track by clicking on a track number on top of the text
-            buffers area. There is a sample map for each track (the bottom-right
-            area). The map is a table of relationships between matchings and
-            samples. When the playing cursor achieves the match from the map,
-            microscale plays appropriate sample. You can enter your own
-            expression in the field. Fill free to play.
-         </div>
-      </div>
-   </div>
-
-
-   <!-- show/hide wtf? view -->
-   <script type="text/javascript">
-   $("#wtf-open-button").click(function() {
-      $("#wtf-container").fadeToggle(1000);
-      $("#main-container").fadeToggle(1000);
-   })
-
-   $("#wtf-close-button").click(function() {
-      $("#wtf-container").fadeToggle(1000);
-      $("#main-container").fadeToggle(1000);
-   })
-   </script>
    <script type="text/javascript" src="scripts/songs-data.json"></script>
    <script type="text/javascript" src="scripts/microscale.js"></script>
 </body>

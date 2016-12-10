@@ -267,8 +267,14 @@ $(function() {
 		var highlightStr = buf.map[buf.position];
 
 		// playing sample
-		var sampleToPlay = buf.id + "." + this.data.matchings[highlightStr];
-		if (this.data.matchings[highlightStr] !== undefined) {
+		var sampleToPlay;
+    if (this.data[buf.id].playSequence) {
+      sampleToPlay = buf.id + "." + (buf.position%6+1);
+    } else {
+      sampleToPlay = buf.id + "." + this.data.matchings[highlightStr];
+    }
+
+		if (this.data.matchings[highlightStr] || this.data[buf.id].playSequence) {
 			this.data[buf.id].initialSampleID = sampleToPlay;
 			this.sampler.start(sampleToPlay);
 			

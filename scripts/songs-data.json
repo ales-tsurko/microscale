@@ -321,6 +321,7 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 		'"#buffer-5" : {'+
 			'"event" : {},'+
 			'"isLoop" : true,'+
+      '"playSequence" : true,'+
 			'"initialSampleID" : "#buffer-5.1",'+
 			'"eventLength" : "4m",'+
 			'"shouldPauseEventOnMatch" : true,'+
