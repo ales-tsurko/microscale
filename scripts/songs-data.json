@@ -1,4 +1,4 @@
-data = '[{"tempo": 59, "expression": "[bright]",' +
+data = '[{"tempo": 59, "expression": "[grusha]",' +
 	'"#buffer-1" : {'+
 		'"event" : {},'+
 		'"isLoop" : false,'+
@@ -37,55 +37,55 @@ data = '[{"tempo": 59, "expression": "[bright]",' +
 	'},'+
 
 	'"samplemap": {'+
-	'"#buffer-1.1" : "./samples/bright/voice-1/b.mp3",'+
-	'"#buffer-1.2" : "./samples/bright/voice-1/r.mp3",'+
-	'"#buffer-1.3" : "./samples/bright/voice-1/i.mp3",'+
-	'"#buffer-1.4" : "./samples/bright/voice-1/g.mp3",'+
-	'"#buffer-1.5" : "./samples/bright/voice-1/h.mp3",'+
-	'"#buffer-1.6" : "./samples/bright/voice-1/t.mp3",'+
+	'"#buffer-1.1" : "./samples/grusha/voice-1/g.mp3",'+
+	'"#buffer-1.2" : "./samples/grusha/voice-1/r.mp3",'+
+	'"#buffer-1.3" : "./samples/grusha/voice-1/u.mp3",'+
+	'"#buffer-1.4" : "./samples/grusha/voice-1/s.mp3",'+
+	'"#buffer-1.5" : "./samples/grusha/voice-1/h.mp3",'+
+	'"#buffer-1.6" : "./samples/grusha/voice-1/a.mp3",'+
 
-	'"#buffer-2.1" : "./samples/bright/voice-2/b.mp3",'+
-	'"#buffer-2.2" : "./samples/bright/voice-2/r.mp3",'+
-	'"#buffer-2.3" : "./samples/bright/voice-2/i.mp3",'+
-	'"#buffer-2.4" : "./samples/bright/voice-2/g.mp3",'+
-	'"#buffer-2.5" : "./samples/bright/voice-2/h.mp3",'+
-	'"#buffer-2.6" : "./samples/bright/voice-2/t.mp3",'+
+	'"#buffer-2.1" : "./samples/grusha/voice-2/g.mp3",'+
+	'"#buffer-2.2" : "./samples/grusha/voice-2/r.mp3",'+
+	'"#buffer-2.3" : "./samples/grusha/voice-2/u.mp3",'+
+	'"#buffer-2.4" : "./samples/grusha/voice-2/s.mp3",'+
+	'"#buffer-2.5" : "./samples/grusha/voice-2/h.mp3",'+
+	'"#buffer-2.6" : "./samples/grusha/voice-2/a.mp3",'+
 
-	'"#buffer-3.1" : "./samples/bright/voice-3/b.mp3",'+
-	'"#buffer-3.2" : "./samples/bright/voice-3/r.mp3",'+
-	'"#buffer-3.3" : "./samples/bright/voice-3/i.mp3",'+
-	'"#buffer-3.4" : "./samples/bright/voice-3/g.mp3",'+
-	'"#buffer-3.5" : "./samples/bright/voice-3/h.mp3",'+
-	'"#buffer-3.6" : "./samples/bright/voice-3/t.mp3",'+
+	'"#buffer-3.1" : "./samples/grusha/voice-3/g.mp3",'+
+	'"#buffer-3.2" : "./samples/grusha/voice-3/r.mp3",'+
+	'"#buffer-3.3" : "./samples/grusha/voice-3/u.mp3",'+
+	'"#buffer-3.4" : "./samples/grusha/voice-3/s.mp3",'+
+	'"#buffer-3.5" : "./samples/grusha/voice-3/h.mp3",'+
+	'"#buffer-3.6" : "./samples/grusha/voice-3/a.mp3",'+
 
-	'"#buffer-4.1" : "./samples/bright/voice-4/b.mp3",'+
-	'"#buffer-4.2" : "./samples/bright/voice-4/r.mp3",'+
-	'"#buffer-4.3" : "./samples/bright/voice-4/i.mp3",'+
-	'"#buffer-4.4" : "./samples/bright/voice-4/g.mp3",'+
-	'"#buffer-4.5" : "./samples/bright/voice-4/h.mp3",'+
-	'"#buffer-4.6" : "./samples/bright/voice-4/t.mp3",'+
+	'"#buffer-4.1" : "./samples/grusha/voice-4/g.mp3",'+
+	'"#buffer-4.2" : "./samples/grusha/voice-4/r.mp3",'+
+	'"#buffer-4.3" : "./samples/grusha/voice-4/u.mp3",'+
+	'"#buffer-4.4" : "./samples/grusha/voice-4/s.mp3",'+
+	'"#buffer-4.5" : "./samples/grusha/voice-4/h.mp3",'+
+	'"#buffer-4.6" : "./samples/grusha/voice-4/a.mp3",'+
 
-	'"#buffer-5.1" : "./samples/bright/voice-5/b.mp3",'+
-	'"#buffer-5.2" : "./samples/bright/voice-5/r.mp3",'+
-	'"#buffer-5.3" : "./samples/bright/voice-5/i.mp3",'+
-	'"#buffer-5.4" : "./samples/bright/voice-5/g.mp3",'+
-	'"#buffer-5.5" : "./samples/bright/voice-5/h.mp3",'+
-	'"#buffer-5.6" : "./samples/bright/voice-5/t.mp3",'+
+	'"#buffer-5.1" : "./samples/grusha/voice-5/g.mp3",'+
+	'"#buffer-5.2" : "./samples/grusha/voice-5/r.mp3",'+
+	'"#buffer-5.3" : "./samples/grusha/voice-5/u.mp3",'+
+	'"#buffer-5.4" : "./samples/grusha/voice-5/s.mp3",'+
+	'"#buffer-5.5" : "./samples/grusha/voice-5/h.mp3",'+
+	'"#buffer-5.6" : "./samples/grusha/voice-5/a.mp3",'+
 
-	'"#buffer-6.1" : "./samples/bright/voice-6/b.mp3",'+
-	'"#buffer-6.2" : "./samples/bright/voice-6/r.mp3",'+
-	'"#buffer-6.3" : "./samples/bright/voice-6/i.mp3",'+
-	'"#buffer-6.4" : "./samples/bright/voice-6/g.mp3",'+
-	'"#buffer-6.5" : "./samples/bright/voice-6/h.mp3",'+
-	'"#buffer-6.6" : "./samples/bright/voice-6/t.mp3"},'+
+	'"#buffer-6.1" : "./samples/grusha/voice-6/g.mp3",'+
+	'"#buffer-6.2" : "./samples/grusha/voice-6/r.mp3",'+
+	'"#buffer-6.3" : "./samples/grusha/voice-6/u.mp3",'+
+	'"#buffer-6.4" : "./samples/grusha/voice-6/s.mp3",'+
+	'"#buffer-6.5" : "./samples/grusha/voice-6/h.mp3",'+
+	'"#buffer-6.6" : "./samples/grusha/voice-6/a.mp3"},'+
 
 	'"matchings": {'+
-		'"b" : 1,'+
+		'"g" : 1,'+
 		'"r" : 2,'+
-		'"i" : 3,'+
-		'"g" : 4,'+
+		'"u" : 3,'+
+		'"s" : 4,'+
 		'"h" : 5,'+
-		'"t" : 6}'+
+		'"a" : 6}'+
 	'},' +
 
 
