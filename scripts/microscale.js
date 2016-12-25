@@ -340,9 +340,15 @@ $(function() {
 		$("#pause-button").hide();
 		$("#rewind-button").hide();
 		$("#loading-buffers-indicator").show();
-		
+
+    // add extensions to samples
+    var samplemapWithExt = {};
+    for (var key in Player.data.samplemap) {
+      samplemapWithExt[key] = Player.data.samplemap[key] + '.' + samplesFormat;
+    }
+    
 		// Load samples bank
-		Player.samples = new Tone.Buffers(Player.data.samplemap, function() {
+		Player.samples = new Tone.Buffers(samplemapWithExt, function() {
 			$("#play-button").show();
 			$("#rewind-button").show();
 			$("#loading-buffers-indicator").hide();

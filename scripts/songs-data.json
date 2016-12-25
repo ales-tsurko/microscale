@@ -37,47 +37,47 @@ data = '[{"tempo": 59, "expression": "[grusha]",' +
 	'},'+
 
 	'"samplemap": {'+
-	'"#buffer-1.1" : "./samples/grusha/voice-1/g.mp3",'+
-	'"#buffer-1.2" : "./samples/grusha/voice-1/r.mp3",'+
-	'"#buffer-1.3" : "./samples/grusha/voice-1/u.mp3",'+
-	'"#buffer-1.4" : "./samples/grusha/voice-1/s.mp3",'+
-	'"#buffer-1.5" : "./samples/grusha/voice-1/h.mp3",'+
-	'"#buffer-1.6" : "./samples/grusha/voice-1/a.mp3",'+
+	'"#buffer-1.1" : "./samples/grusha/voice-1/g",'+
+	'"#buffer-1.2" : "./samples/grusha/voice-1/r",'+
+	'"#buffer-1.3" : "./samples/grusha/voice-1/u",'+
+	'"#buffer-1.4" : "./samples/grusha/voice-1/s",'+
+	'"#buffer-1.5" : "./samples/grusha/voice-1/h",'+
+	'"#buffer-1.6" : "./samples/grusha/voice-1/a",'+
 
-	'"#buffer-2.1" : "./samples/grusha/voice-2/g.mp3",'+
-	'"#buffer-2.2" : "./samples/grusha/voice-2/r.mp3",'+
-	'"#buffer-2.3" : "./samples/grusha/voice-2/u.mp3",'+
-	'"#buffer-2.4" : "./samples/grusha/voice-2/s.mp3",'+
-	'"#buffer-2.5" : "./samples/grusha/voice-2/h.mp3",'+
-	'"#buffer-2.6" : "./samples/grusha/voice-2/a.mp3",'+
+	'"#buffer-2.1" : "./samples/grusha/voice-2/g",'+
+	'"#buffer-2.2" : "./samples/grusha/voice-2/r",'+
+	'"#buffer-2.3" : "./samples/grusha/voice-2/u",'+
+	'"#buffer-2.4" : "./samples/grusha/voice-2/s",'+
+	'"#buffer-2.5" : "./samples/grusha/voice-2/h",'+
+	'"#buffer-2.6" : "./samples/grusha/voice-2/a",'+
 
-	'"#buffer-3.1" : "./samples/grusha/voice-3/g.mp3",'+
-	'"#buffer-3.2" : "./samples/grusha/voice-3/r.mp3",'+
-	'"#buffer-3.3" : "./samples/grusha/voice-3/u.mp3",'+
-	'"#buffer-3.4" : "./samples/grusha/voice-3/s.mp3",'+
-	'"#buffer-3.5" : "./samples/grusha/voice-3/h.mp3",'+
-	'"#buffer-3.6" : "./samples/grusha/voice-3/a.mp3",'+
+	'"#buffer-3.1" : "./samples/grusha/voice-3/g",'+
+	'"#buffer-3.2" : "./samples/grusha/voice-3/r",'+
+	'"#buffer-3.3" : "./samples/grusha/voice-3/u",'+
+	'"#buffer-3.4" : "./samples/grusha/voice-3/s",'+
+	'"#buffer-3.5" : "./samples/grusha/voice-3/h",'+
+	'"#buffer-3.6" : "./samples/grusha/voice-3/a",'+
 
-	'"#buffer-4.1" : "./samples/grusha/voice-4/g.mp3",'+
-	'"#buffer-4.2" : "./samples/grusha/voice-4/r.mp3",'+
-	'"#buffer-4.3" : "./samples/grusha/voice-4/u.mp3",'+
-	'"#buffer-4.4" : "./samples/grusha/voice-4/s.mp3",'+
-	'"#buffer-4.5" : "./samples/grusha/voice-4/h.mp3",'+
-	'"#buffer-4.6" : "./samples/grusha/voice-4/a.mp3",'+
+	'"#buffer-4.1" : "./samples/grusha/voice-4/g",'+
+	'"#buffer-4.2" : "./samples/grusha/voice-4/r",'+
+	'"#buffer-4.3" : "./samples/grusha/voice-4/u",'+
+	'"#buffer-4.4" : "./samples/grusha/voice-4/s",'+
+	'"#buffer-4.5" : "./samples/grusha/voice-4/h",'+
+	'"#buffer-4.6" : "./samples/grusha/voice-4/a",'+
 
-	'"#buffer-5.1" : "./samples/grusha/voice-5/g.mp3",'+
-	'"#buffer-5.2" : "./samples/grusha/voice-5/r.mp3",'+
-	'"#buffer-5.3" : "./samples/grusha/voice-5/u.mp3",'+
-	'"#buffer-5.4" : "./samples/grusha/voice-5/s.mp3",'+
-	'"#buffer-5.5" : "./samples/grusha/voice-5/h.mp3",'+
-	'"#buffer-5.6" : "./samples/grusha/voice-5/a.mp3",'+
+	'"#buffer-5.1" : "./samples/grusha/voice-5/g",'+
+	'"#buffer-5.2" : "./samples/grusha/voice-5/r",'+
+	'"#buffer-5.3" : "./samples/grusha/voice-5/u",'+
+	'"#buffer-5.4" : "./samples/grusha/voice-5/s",'+
+	'"#buffer-5.5" : "./samples/grusha/voice-5/h",'+
+	'"#buffer-5.6" : "./samples/grusha/voice-5/a",'+
 
-	'"#buffer-6.1" : "./samples/grusha/voice-6/g.mp3",'+
-	'"#buffer-6.2" : "./samples/grusha/voice-6/r.mp3",'+
-	'"#buffer-6.3" : "./samples/grusha/voice-6/u.mp3",'+
-	'"#buffer-6.4" : "./samples/grusha/voice-6/s.mp3",'+
-	'"#buffer-6.5" : "./samples/grusha/voice-6/h.mp3",'+
-	'"#buffer-6.6" : "./samples/grusha/voice-6/a.mp3"},'+
+	'"#buffer-6.1" : "./samples/grusha/voice-6/g",'+
+	'"#buffer-6.2" : "./samples/grusha/voice-6/r",'+
+	'"#buffer-6.3" : "./samples/grusha/voice-6/u",'+
+	'"#buffer-6.4" : "./samples/grusha/voice-6/s",'+
+	'"#buffer-6.5" : "./samples/grusha/voice-6/h",'+
+	'"#buffer-6.6" : "./samples/grusha/voice-6/a"},'+
 
 	'"matchings": {'+
 		'"g" : 1,'+
@@ -136,47 +136,47 @@ data = '[{"tempo": 59, "expression": "[grusha]",' +
 		'},'+
 	
 		'"samplemap": {'+
-		'"#buffer-1.1" : "./samples/sirena/voice-1/s.mp3",'+
-		'"#buffer-1.2" : "./samples/sirena/voice-1/i.mp3",'+
-		'"#buffer-1.3" : "./samples/sirena/voice-1/r.mp3",'+
-		'"#buffer-1.4" : "./samples/sirena/voice-1/e.mp3",'+
-		'"#buffer-1.5" : "./samples/sirena/voice-1/n.mp3",'+
-		'"#buffer-1.6" : "./samples/sirena/voice-1/a.mp3",'+
+		'"#buffer-1.1" : "./samples/sirena/voice-1/s",'+
+		'"#buffer-1.2" : "./samples/sirena/voice-1/i",'+
+		'"#buffer-1.3" : "./samples/sirena/voice-1/r",'+
+		'"#buffer-1.4" : "./samples/sirena/voice-1/e",'+
+		'"#buffer-1.5" : "./samples/sirena/voice-1/n",'+
+		'"#buffer-1.6" : "./samples/sirena/voice-1/a",'+
 
-		'"#buffer-2.1" : "./samples/sirena/voice-2/s.mp3",'+
-		'"#buffer-2.2" : "./samples/sirena/voice-2/i.mp3",'+
-		'"#buffer-2.3" : "./samples/sirena/voice-2/r.mp3",'+
-		'"#buffer-2.4" : "./samples/sirena/voice-2/e.mp3",'+
-		'"#buffer-2.5" : "./samples/sirena/voice-2/n.mp3",'+
-		'"#buffer-2.6" : "./samples/sirena/voice-2/a.mp3",'+
+		'"#buffer-2.1" : "./samples/sirena/voice-2/s",'+
+		'"#buffer-2.2" : "./samples/sirena/voice-2/i",'+
+		'"#buffer-2.3" : "./samples/sirena/voice-2/r",'+
+		'"#buffer-2.4" : "./samples/sirena/voice-2/e",'+
+		'"#buffer-2.5" : "./samples/sirena/voice-2/n",'+
+		'"#buffer-2.6" : "./samples/sirena/voice-2/a",'+
 
-		'"#buffer-3.1" : "./samples/sirena/voice-3/s.mp3",'+
-		'"#buffer-3.2" : "./samples/sirena/voice-3/i.mp3",'+
-		'"#buffer-3.3" : "./samples/sirena/voice-3/r.mp3",'+
-		'"#buffer-3.4" : "./samples/sirena/voice-3/e.mp3",'+
-		'"#buffer-3.5" : "./samples/sirena/voice-3/s.mp3",'+
-		'"#buffer-3.6" : "./samples/sirena/voice-3/i.mp3",'+
+		'"#buffer-3.1" : "./samples/sirena/voice-3/s",'+
+		'"#buffer-3.2" : "./samples/sirena/voice-3/i",'+
+		'"#buffer-3.3" : "./samples/sirena/voice-3/r",'+
+		'"#buffer-3.4" : "./samples/sirena/voice-3/e",'+
+		'"#buffer-3.5" : "./samples/sirena/voice-3/s",'+
+		'"#buffer-3.6" : "./samples/sirena/voice-3/i",'+
 
-		'"#buffer-4.1" : "./samples/sirena/voice-4/s.mp3",'+
-		'"#buffer-4.2" : "./samples/sirena/voice-4/i.mp3",'+
-		'"#buffer-4.3" : "./samples/sirena/voice-4/r.mp3",'+
-		'"#buffer-4.4" : "./samples/sirena/voice-4/e.mp3",'+
-		'"#buffer-4.5" : "./samples/sirena/voice-4/s.mp3",'+
-		'"#buffer-4.6" : "./samples/sirena/voice-4/i.mp3",'+
+		'"#buffer-4.1" : "./samples/sirena/voice-4/s",'+
+		'"#buffer-4.2" : "./samples/sirena/voice-4/i",'+
+		'"#buffer-4.3" : "./samples/sirena/voice-4/r",'+
+		'"#buffer-4.4" : "./samples/sirena/voice-4/e",'+
+		'"#buffer-4.5" : "./samples/sirena/voice-4/s",'+
+		'"#buffer-4.6" : "./samples/sirena/voice-4/i",'+
 
-		'"#buffer-5.1" : "./samples/sirena/voice-5/s.mp3",'+
-		'"#buffer-5.2" : "./samples/sirena/voice-5/i.mp3",'+
-		'"#buffer-5.3" : "./samples/sirena/voice-5/r.mp3",'+
-		'"#buffer-5.4" : "./samples/sirena/voice-5/e.mp3",'+
-		'"#buffer-5.5" : "./samples/sirena/voice-5/n.mp3",'+
-		'"#buffer-5.6" : "./samples/sirena/voice-5/a.mp3",'+
+		'"#buffer-5.1" : "./samples/sirena/voice-5/s",'+
+		'"#buffer-5.2" : "./samples/sirena/voice-5/i",'+
+		'"#buffer-5.3" : "./samples/sirena/voice-5/r",'+
+		'"#buffer-5.4" : "./samples/sirena/voice-5/e",'+
+		'"#buffer-5.5" : "./samples/sirena/voice-5/n",'+
+		'"#buffer-5.6" : "./samples/sirena/voice-5/a",'+
 
-		'"#buffer-6.1" : "./samples/sirena/voice-6/s.mp3",'+
-		'"#buffer-6.2" : "./samples/sirena/voice-6/i.mp3",'+
-		'"#buffer-6.3" : "./samples/sirena/voice-6/r.mp3",'+
-		'"#buffer-6.4" : "./samples/sirena/voice-6/s.mp3",'+
-		'"#buffer-6.5" : "./samples/sirena/voice-6/i.mp3",'+
-		'"#buffer-6.6" : "./samples/sirena/voice-6/r.mp3"},'+
+		'"#buffer-6.1" : "./samples/sirena/voice-6/s",'+
+		'"#buffer-6.2" : "./samples/sirena/voice-6/i",'+
+		'"#buffer-6.3" : "./samples/sirena/voice-6/r",'+
+		'"#buffer-6.4" : "./samples/sirena/voice-6/s",'+
+		'"#buffer-6.5" : "./samples/sirena/voice-6/i",'+
+		'"#buffer-6.6" : "./samples/sirena/voice-6/r"},'+
 
 		'"matchings": {'+
 			'"s" : 1,'+
@@ -238,47 +238,47 @@ data = '[{"tempo": 59, "expression": "[grusha]",' +
 		'},'+
 
 		'"samplemap": {'+
-		'"#buffer-1.1" : "./samples/module/voice-1/m.mp3",'+
-		'"#buffer-1.2" : "./samples/module/voice-1/o.mp3",'+
-		'"#buffer-1.3" : "./samples/module/voice-1/d.mp3",'+
-		'"#buffer-1.4" : "./samples/module/voice-1/u.mp3",'+
-		'"#buffer-1.5" : "./samples/module/voice-1/l.mp3",'+
-		'"#buffer-1.6" : "./samples/module/voice-1/e.mp3",'+
+		'"#buffer-1.1" : "./samples/module/voice-1/m",'+
+		'"#buffer-1.2" : "./samples/module/voice-1/o",'+
+		'"#buffer-1.3" : "./samples/module/voice-1/d",'+
+		'"#buffer-1.4" : "./samples/module/voice-1/u",'+
+		'"#buffer-1.5" : "./samples/module/voice-1/l",'+
+		'"#buffer-1.6" : "./samples/module/voice-1/e",'+
 
-		'"#buffer-2.1" : "./samples/module/voice-2/u.mp3",'+
-		'"#buffer-2.2" : "./samples/module/voice-2/l.mp3",'+
-		'"#buffer-2.3" : "./samples/module/voice-2/e.mp3",'+
-		'"#buffer-2.4" : "./samples/module/voice-2/m.mp3",'+
-		'"#buffer-2.5" : "./samples/module/voice-2/o.mp3",'+
-		'"#buffer-2.6" : "./samples/module/voice-2/d.mp3",'+
+		'"#buffer-2.1" : "./samples/module/voice-2/u",'+
+		'"#buffer-2.2" : "./samples/module/voice-2/l",'+
+		'"#buffer-2.3" : "./samples/module/voice-2/e",'+
+		'"#buffer-2.4" : "./samples/module/voice-2/m",'+
+		'"#buffer-2.5" : "./samples/module/voice-2/o",'+
+		'"#buffer-2.6" : "./samples/module/voice-2/d",'+
 
-		'"#buffer-3.1" : "./samples/module/voice-3/m.mp3",'+
-		'"#buffer-3.2" : "./samples/module/voice-3/o.mp3",'+
-		'"#buffer-3.3" : "./samples/module/voice-3/d.mp3",'+
-		'"#buffer-3.4" : "./samples/module/voice-3/u.mp3",'+
-		'"#buffer-3.5" : "./samples/module/voice-3/l.mp3",'+
-		'"#buffer-3.6" : "./samples/module/voice-3/e.mp3",'+
+		'"#buffer-3.1" : "./samples/module/voice-3/m",'+
+		'"#buffer-3.2" : "./samples/module/voice-3/o",'+
+		'"#buffer-3.3" : "./samples/module/voice-3/d",'+
+		'"#buffer-3.4" : "./samples/module/voice-3/u",'+
+		'"#buffer-3.5" : "./samples/module/voice-3/l",'+
+		'"#buffer-3.6" : "./samples/module/voice-3/e",'+
 
-		'"#buffer-4.1" : "./samples/module/voice-4/u.mp3",'+
-		'"#buffer-4.2" : "./samples/module/voice-4/l.mp3",'+
-		'"#buffer-4.3" : "./samples/module/voice-4/e.mp3",'+
-		'"#buffer-4.4" : "./samples/module/voice-4/m.mp3",'+
-		'"#buffer-4.5" : "./samples/module/voice-4/o.mp3",'+
-		'"#buffer-4.6" : "./samples/module/voice-4/d.mp3",'+
+		'"#buffer-4.1" : "./samples/module/voice-4/u",'+
+		'"#buffer-4.2" : "./samples/module/voice-4/l",'+
+		'"#buffer-4.3" : "./samples/module/voice-4/e",'+
+		'"#buffer-4.4" : "./samples/module/voice-4/m",'+
+		'"#buffer-4.5" : "./samples/module/voice-4/o",'+
+		'"#buffer-4.6" : "./samples/module/voice-4/d",'+
 
-		'"#buffer-5.1" : "./samples/module/voice-5/m.mp3",'+
-		'"#buffer-5.2" : "./samples/module/voice-5/o.mp3",'+
-		'"#buffer-5.3" : "./samples/module/voice-5/d.mp3",'+
-		'"#buffer-5.4" : "./samples/module/voice-5/u.mp3",'+
-		'"#buffer-5.5" : "./samples/module/voice-5/l.mp3",'+
-		'"#buffer-5.6" : "./samples/module/voice-5/e.mp3",'+
+		'"#buffer-5.1" : "./samples/module/voice-5/m",'+
+		'"#buffer-5.2" : "./samples/module/voice-5/o",'+
+		'"#buffer-5.3" : "./samples/module/voice-5/d",'+
+		'"#buffer-5.4" : "./samples/module/voice-5/u",'+
+		'"#buffer-5.5" : "./samples/module/voice-5/l",'+
+		'"#buffer-5.6" : "./samples/module/voice-5/e",'+
 
-		'"#buffer-6.1" : "./samples/module/voice-6/m.mp3",'+
-		'"#buffer-6.2" : "./samples/module/voice-6/o.mp3",'+
-		'"#buffer-6.3" : "./samples/module/voice-6/d.mp3",'+
-		'"#buffer-6.4" : "./samples/module/voice-6/u.mp3",'+
-		'"#buffer-6.5" : "./samples/module/voice-6/l.mp3",'+
-		'"#buffer-6.6" : "./samples/module/voice-6/e.mp3"},'+
+		'"#buffer-6.1" : "./samples/module/voice-6/m",'+
+		'"#buffer-6.2" : "./samples/module/voice-6/o",'+
+		'"#buffer-6.3" : "./samples/module/voice-6/d",'+
+		'"#buffer-6.4" : "./samples/module/voice-6/u",'+
+		'"#buffer-6.5" : "./samples/module/voice-6/l",'+
+		'"#buffer-6.6" : "./samples/module/voice-6/e"},'+
 
 		'"matchings": {'+
 			'"m" : 1,'+
@@ -338,47 +338,47 @@ data = '[{"tempo": 59, "expression": "[grusha]",' +
 		'},'+
 	
 		'"samplemap": {'+
-		'"#buffer-1.1" : "./samples/random/voice-1/r.mp3",'+
-		'"#buffer-1.2" : "./samples/random/voice-1/a.mp3",'+
-		'"#buffer-1.3" : "./samples/random/voice-1/n.mp3",'+
-		'"#buffer-1.4" : "./samples/random/voice-1/d.mp3",'+
-		'"#buffer-1.5" : "./samples/random/voice-1/o.mp3",'+
-		'"#buffer-1.6" : "./samples/random/voice-1/m.mp3",'+
+		'"#buffer-1.1" : "./samples/random/voice-1/r",'+
+		'"#buffer-1.2" : "./samples/random/voice-1/a",'+
+		'"#buffer-1.3" : "./samples/random/voice-1/n",'+
+		'"#buffer-1.4" : "./samples/random/voice-1/d",'+
+		'"#buffer-1.5" : "./samples/random/voice-1/o",'+
+		'"#buffer-1.6" : "./samples/random/voice-1/m",'+
 
-		'"#buffer-2.1" : "./samples/random/voice-2/r.mp3",'+
-		'"#buffer-2.2" : "./samples/random/voice-2/a.mp3",'+
-		'"#buffer-2.3" : "./samples/random/voice-2/n.mp3",'+
-		'"#buffer-2.4" : "./samples/random/voice-2/r.mp3",'+
-		'"#buffer-2.5" : "./samples/random/voice-2/a.mp3",'+
-		'"#buffer-2.6" : "./samples/random/voice-2/n.mp3",'+
+		'"#buffer-2.1" : "./samples/random/voice-2/r",'+
+		'"#buffer-2.2" : "./samples/random/voice-2/a",'+
+		'"#buffer-2.3" : "./samples/random/voice-2/n",'+
+		'"#buffer-2.4" : "./samples/random/voice-2/r",'+
+		'"#buffer-2.5" : "./samples/random/voice-2/a",'+
+		'"#buffer-2.6" : "./samples/random/voice-2/n",'+
 
-		'"#buffer-3.1" : "./samples/random/voice-3/r.mp3",'+
-		'"#buffer-3.2" : "./samples/random/voice-3/a.mp3",'+
-		'"#buffer-3.3" : "./samples/random/voice-3/n.mp3",'+
-		'"#buffer-3.4" : "./samples/random/voice-3/d.mp3",'+
-		'"#buffer-3.5" : "./samples/random/voice-3/o.mp3",'+
-		'"#buffer-3.6" : "./samples/random/voice-3/m.mp3",'+
+		'"#buffer-3.1" : "./samples/random/voice-3/r",'+
+		'"#buffer-3.2" : "./samples/random/voice-3/a",'+
+		'"#buffer-3.3" : "./samples/random/voice-3/n",'+
+		'"#buffer-3.4" : "./samples/random/voice-3/d",'+
+		'"#buffer-3.5" : "./samples/random/voice-3/o",'+
+		'"#buffer-3.6" : "./samples/random/voice-3/m",'+
 
-		'"#buffer-4.1" : "./samples/random/voice-4/r.mp3",'+
-		'"#buffer-4.2" : "./samples/random/voice-4/a.mp3",'+
-		'"#buffer-4.3" : "./samples/random/voice-4/n.mp3",'+
-		'"#buffer-4.4" : "./samples/random/voice-4/d.mp3",'+
-		'"#buffer-4.5" : "./samples/random/voice-4/o.mp3",'+
-		'"#buffer-4.6" : "./samples/random/voice-4/m.mp3",'+
+		'"#buffer-4.1" : "./samples/random/voice-4/r",'+
+		'"#buffer-4.2" : "./samples/random/voice-4/a",'+
+		'"#buffer-4.3" : "./samples/random/voice-4/n",'+
+		'"#buffer-4.4" : "./samples/random/voice-4/d",'+
+		'"#buffer-4.5" : "./samples/random/voice-4/o",'+
+		'"#buffer-4.6" : "./samples/random/voice-4/m",'+
 
-		'"#buffer-5.1" : "./samples/random/voice-5/r.mp3",'+
-		'"#buffer-5.2" : "./samples/random/voice-5/a.mp3",'+
-		'"#buffer-5.3" : "./samples/random/voice-5/n.mp3",'+
-		'"#buffer-5.4" : "./samples/random/voice-5/d.mp3",'+
-		'"#buffer-5.5" : "./samples/random/voice-5/o.mp3",'+
-		'"#buffer-5.6" : "./samples/random/voice-5/m.mp3",'+
+		'"#buffer-5.1" : "./samples/random/voice-5/r",'+
+		'"#buffer-5.2" : "./samples/random/voice-5/a",'+
+		'"#buffer-5.3" : "./samples/random/voice-5/n",'+
+		'"#buffer-5.4" : "./samples/random/voice-5/d",'+
+		'"#buffer-5.5" : "./samples/random/voice-5/o",'+
+		'"#buffer-5.6" : "./samples/random/voice-5/m",'+
 
-		'"#buffer-6.1" : "./samples/random/voice-6/r.mp3",'+
-		'"#buffer-6.2" : "./samples/random/voice-6/a.mp3",'+
-		'"#buffer-6.3" : "./samples/random/voice-6/n.mp3",'+
-		'"#buffer-6.4" : "./samples/random/voice-6/d.mp3",'+
-		'"#buffer-6.5" : "./samples/random/voice-6/o.mp3",'+
-		'"#buffer-6.6" : "./samples/random/voice-6/m.mp3"},'+
+		'"#buffer-6.1" : "./samples/random/voice-6/r",'+
+		'"#buffer-6.2" : "./samples/random/voice-6/a",'+
+		'"#buffer-6.3" : "./samples/random/voice-6/n",'+
+		'"#buffer-6.4" : "./samples/random/voice-6/d",'+
+		'"#buffer-6.5" : "./samples/random/voice-6/o",'+
+		'"#buffer-6.6" : "./samples/random/voice-6/m"},'+
 
 		'"matchings": {'+
 			'"r" : 1,'+
