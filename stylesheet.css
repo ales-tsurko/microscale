@@ -1,10 +1,17 @@
-/* color palette #uid=2530u0k++zmAlZF+VXq+WqO+kkH */
+/* color #uid=2530u0k++zmAlZF+VXq+WqO+kkH */
 
 @font-face {
-	font-family: 'xprsn-menlo';
+	font-family: 'microscale-menlo';
 	font-style: normal;
 	font-weight: normal;
 	src: url('fonts/Menlo-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'microscale-roboto';
+  font-style: normal;
+  font-weight: normal;
+  src: url('fonts/RobotoSlab-Regular.woff') format('woff');
 }
 
 body {
@@ -35,7 +42,6 @@ body {
 #transport-container {
 	display: inline-block;
 	position: relative;
-	/* margin-left: 18%; */
 	width: 100%;
 	height: 43px;
 }
@@ -88,7 +94,7 @@ body {
   float: left;
 	width: 140px;
 	height: 42px;
-	font-family: 'Roboto Slab', Georgia, serif;
+	font-family: 'microscale-roboto', Georgia, serif;
 	font-size: 33px;
 	border: 0;
 	margin: 0;
@@ -111,7 +117,7 @@ body {
 	bottom: 0;
   margin-right: 16px;
   margin-top: 12px;
-	font-family: 'xprsn-menlo';
+	font-family: 'microscale-menlo';
 }
 
 #tracklist-container ul {
@@ -153,7 +159,7 @@ body {
 	display: inline-block;
 	width: 30.4%;
   height: 40vh;
-	font-family: 'xprsn-menlo';
+	font-family: 'microscale-menlo';
 	color: #555555;
 	font-size: 11px;
 	line-height: 142%;
@@ -185,7 +191,7 @@ body {
 	overflow-y: hidden;
 	overflow-x: hidden;
 
-	font-family: 'Roboto Slab', Georgia, serif;
+	font-family: 'microscale-roboto', Georgia, serif;
 	font-size: 8vw;
 	line-height: 70%;
 	opacity: 0;
@@ -222,7 +228,7 @@ body {
 /*BOTTOM CONTAINER*/
 #bottom-container {
 	position: absolute;
-	font-family: 'xprsn-menlo';
+	font-family: 'microscale-menlo';
 	width: 100%;
   height: 37px;
 	bottom: 0;
@@ -305,7 +311,7 @@ body {
 
 	width: 258px;
 	height: 258px;
-	font-family: 'xprsn-menlo';
+	font-family: 'microscale-menlo';
 	color: white;
 	font-size: 11px;
 	line-height: normal;
@@ -320,7 +326,7 @@ body {
 }
 
 #wtf-info-container a {
-	font-family: 'xprsn-menlo';
+	font-family: 'microscale-menlo';
 	color: white;
 	font-size: 11px;
 	line-height: normal;
