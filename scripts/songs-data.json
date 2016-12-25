@@ -312,7 +312,7 @@ data = '[{"tempo": 59, "expression": "[grusha]",' +
 			'"isLoop" : false,'+
 			'"eventLength" : "1m",'+
 			'"shouldPauseEventOnMatch" : true,'+
-			'"pauseLength" : 16'+ // if shouldPauseEventOnMatch is true this property is the number of measures for pause
+			'"pauseLength" : 8'+ // if shouldPauseEventOnMatch is true this property is the number of measures for pause
 		'},'+
 		'"#buffer-4" : {'+
 			'"event" : {},'+
