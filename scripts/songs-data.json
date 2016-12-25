@@ -332,8 +332,9 @@ data = '[{"tempo": 59, "expression": "[grusha]",' +
 		'"#buffer-6" : {'+
 			'"event" : {},'+
 			'"isLoop" : false,'+
-			'"eventLength" : "8m",'+
-			'"shouldPauseEventOnMatch" : false'+
+			'"eventLength" : "2n",'+
+			'"shouldPauseEventOnMatch" : true,'+
+      '"pauseLength" : 7'+
 		'},'+
 	
 		'"samplemap": {'+
