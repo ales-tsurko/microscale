@@ -37,7 +37,7 @@ body {
 	position: relative;
 	/* margin-left: 18%; */
 	width: 100%;
-	height: 6vh;
+	height: 43px;
 }
 
 
@@ -224,8 +224,9 @@ body {
 	position: absolute;
 	font-family: 'xprsn-menlo';
 	width: 100%;
-	height: 128px;
+  height: 37px;
 	bottom: 0;
+  /* background-color: black; */
 }
 
 
