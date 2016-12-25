@@ -31,42 +31,25 @@ body {
 	height: 100%;
 }
 
-/*EXPRESSION INPUT*/
-
-#expression-input {
-	position: relative;
-	display: inline-block;
-	width: 90%;
-	height: 23vh;
-	font-family: 'Roboto Slab', Georgia, serif;
-	font-size: 65px;
-	border: 0;
-	margin: 0;
-	padding: 0;
-	-webkit-appearance: none;
-}
-
-#expression-input:focus {
-	color: #F800B4;
-}
-
-/*TOP CONTAINER*/
+/*TRANSPORT CONTAINER*/
 #transport-container {
-	display: block;
+	display: inline-block;
 	position: relative;
-	margin-left: 18%;
-	width: 64%;
+	/* margin-left: 18%; */
+	width: 100%;
 	height: 6vh;
 }
 
+
 /*TRANPSORT*/
 #transport-buttons-container {
-	float: right;
+  margin-left: 16px;
+	float: left;
 	width: 85px;
 }
 
 .top-button {
-	position: absolute;
+  position: absolute;
 	width: 37px;
 	height: 37px;
 	bottom: 0;
@@ -97,11 +80,37 @@ body {
 	float: left;
 }
 
+/*EXPRESSION INPUT*/
+
+#expression-input {
+	position: relative;
+	display: inline-block;
+  float: left;
+	width: 140px;
+	height: 6vh;
+	font-family: 'Roboto Slab', Georgia, serif;
+	font-size: 33px;
+	border: 0;
+	margin: 0;
+  margin-left: 99px;
+	padding: 0;
+	-webkit-appearance: none;
+}
+
+#expression-input:focus {
+	color: #F800B4;
+}
+
 /*TRACKLIST*/
 
 #tracklist-container {
-	position: absolute;
+  /* position: absolute; */
+  position: relative;
+  display: inline-block;
+  float: right;
 	bottom: 0;
+  margin-right: 16px;
+  margin-top: 12px;
 	font-family: 'xprsn-menlo';
 }
 
@@ -134,22 +143,22 @@ body {
 #middle-container, #middle-overlay-container {
 	display: block;
 	position: relative;
-	margin-left: 18%;
-	width: 64%;
+	margin-left: 0;
+	width: 100%;
 	line-height:0px;
 	font-size:1px;
 }
 
 .text-buffer, .buffer-overlay {
 	display: inline-block;
-	width: 27.5%;
-	height: 16vh;
+	width: 30.4%;
+  height: 40vh;
 	font-family: 'xprsn-menlo';
 	color: #555555;
 	font-size: 11px;
 	line-height: 142%;
 	border: 0;
-	margin: 2.7%;
+	margin: 1.3%;
 	padding: 0;
 	overflow-y: auto;
 	overflow-x: hidden;

@@ -22,72 +22,76 @@
    <!-- <script type="text/javascript" src="scripts/tonight.js"></script> -->
 </head>
 <body>
-   <script type="text/javascript"></script>
-   <div id="main-container">
+  <script type="text/javascript"></script>
+  <div id="main-container">
+    <div id="transport-container">
+      
+      <div id="transport-buttons-container">
+        <img src="img/loading_buffers.gif" id="loading-buffers-indicator" class="top-button" />
+        <img src="img/play-button.svg" id="play-button" class="play-pause-button top-button" />
+        <img src="img/pause-button.svg" id="pause-button" style="display: none" class="play-pause-button top-button" />
+        <img src="img/rewind-button.svg" id="rewind-button" class="top-button" />
+        <img src="img/rewind-button-mousedown.svg" id="rewind-button-mousedown" class="top-button" />
+      </div>
+
       <div id="input-container" style="display:block;width: 98%; margin:auto;vertical-align:top">
-         <input id="expression-input" type="text" name="name" value="microscale" spellcheck="false">
-      </div>
-      <div id="transport-container">
-         <div id="transport-buttons-container">
-            <img src="img/loading_buffers.gif" id="loading-buffers-indicator" class="top-button" />
-            <img src="img/play-button.svg" id="play-button" class="play-pause-button top-button" />
-            <img src="img/pause-button.svg" id="pause-button" style="display: none" class="play-pause-button top-button" />
-            <img src="img/rewind-button.svg" id="rewind-button" class="top-button" />
-            <img src="img/rewind-button-mousedown.svg" id="rewind-button-mousedown" class="top-button" />
-         </div>
-         <div id="tracklist-container">
-            <ul id="tracklist">
-               <li class="current-track">1</li>
-               <li>2</li>
-               <li>3</li>
-               <li>4</li>
-            </ul>
-         </div>
+        <input id="expression-input" type="text" name="name" value="microscale" spellcheck="false">
       </div>
 
-      <div id="middle-container">
-         <div class="loading-indicator" id="load-indic-div-1"><span></span><img id="load-indic-buf-1" src="img/loading-indicator.gif" /></div>
-         <div id="buffer-overlay-1" class="buffer-overlay"><span></span></div>
-         <div id="buffer-1" class="text-buffer"></div>
-
-         <div class="loading-indicator" id="load-indic-div-2"><span></span><img id="load-indic-buf-2" src="img/loading-indicator.gif" /></div>
-         <div id="buffer-overlay-2" class="buffer-overlay"><span></span></div>
-         <div id="buffer-2" class="text-buffer"></div>
-
-         <div class="loading-indicator" id="load-indic-div-3"><span></span><img id="load-indic-buf-3" src="img/loading-indicator.gif" /></div>
-         <div id="buffer-overlay-3" class="buffer-overlay"><span></span></div>
-         <div id="buffer-3" class="text-buffer"></div>
-
-
-         <div id="buffer-4" class="text-buffer"></div>
-         <div id="buffer-overlay-4" class="buffer-overlay" style="left:0"><span></span></div>
-         <div class="loading-indicator" id="load-indic-div-4" style="left:0"><span></span><img id="load-indic-buf-4" src="img/loading-indicator.gif" /></div>
-
-         <div class="loading-indicator" id="load-indic-div-5"><span></span><img id="load-indic-buf-5" src="img/loading-indicator.gif" /></div>
-         <div id="buffer-overlay-5" class="buffer-overlay"><span></span></div>
-         <div id="buffer-5" class="text-buffer"></div>
-
-         <div class="loading-indicator" id="load-indic-div-6"><span></span><img id="load-indic-buf-6" src="img/loading-indicator.gif" /></div>
-         <div id="buffer-overlay-6" class="buffer-overlay"><span></span></div>
-         <div id="buffer-6" class="text-buffer"></div>
+      <div id="tracklist-container">
+        <ul id="tracklist">
+          <li class="current-track">1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+        </ul>
       </div>
+    </div>
+
+    <div id="middle-container">
+      <div class="loading-indicator" id="load-indic-div-1"><span></span><img id="load-indic-buf-1" src="img/loading-indicator.gif" /></div>
+      <div id="buffer-overlay-1" class="buffer-overlay"><span></span></div>
+      <div id="buffer-1" class="text-buffer"></div>
+
+      <div class="loading-indicator" id="load-indic-div-2"><span></span><img id="load-indic-buf-2" src="img/loading-indicator.gif" /></div>
+      <div id="buffer-overlay-2" class="buffer-overlay"><span></span></div>
+      <div id="buffer-2" class="text-buffer"></div>
+
+      <div class="loading-indicator" id="load-indic-div-3"><span></span><img id="load-indic-buf-3" src="img/loading-indicator.gif" /></div>
+      <div id="buffer-overlay-3" class="buffer-overlay"><span></span></div>
+      <div id="buffer-3" class="text-buffer"></div>
 
 
-      <div id="bottom-container">
-         <div style="display:inline-block;position:absolute;width:100%;bottom:7%;text-align:right;font-size:10px;z-index:50">
-            <a href="http://alestsurko.by" target="_blank"><span style="margin-right:1%;color:white;background-color:black;">&nbsp;&copy; 2016 Aliaksandr Tsurko&nbsp;</span></a>
-         </div>
-         <div id="map-container">
-            <ul>
-               <br>
-               <li>microscale is music from random wikipedia articles</li>
-            </ul>
-         </div>
+      <div id="buffer-4" class="text-buffer"></div>
+      <div id="buffer-overlay-4" class="buffer-overlay" style="left:0"><span></span></div>
+      <div class="loading-indicator" id="load-indic-div-4" style="left:0"><span></span><img id="load-indic-buf-4" src="img/loading-indicator.gif" /></div>
+
+      <div class="loading-indicator" id="load-indic-div-5"><span></span><img id="load-indic-buf-5" src="img/loading-indicator.gif" /></div>
+      <div id="buffer-overlay-5" class="buffer-overlay"><span></span></div>
+      <div id="buffer-5" class="text-buffer"></div>
+
+      <div class="loading-indicator" id="load-indic-div-6"><span></span><img id="load-indic-buf-6" src="img/loading-indicator.gif" /></div>
+      <div id="buffer-overlay-6" class="buffer-overlay"><span></span></div>
+      <div id="buffer-6" class="text-buffer"></div>
+    </div>
+
+
+    <div id="bottom-container">
+      <div style="display:inline-block;position:absolute;width:100%;bottom:7%;text-align:right;font-size:10px;z-index:50">
+        <a href="http://alestsurko.by" target="_blank"><span style="margin-right:1%;color:white;background-color:black;">&nbsp;&copy; 2016 Aliaksandr Tsurko&nbsp;</span></a>
       </div>
-   </div>
+      <!-- <div id="map-container"> -->
+        <!-- <ul> -->
+          <!-- <br> -->
+          <!-- <li>microscale is music from random wikipedia articles</li> -->
+        <!-- </ul> -->
+      <!-- </div> -->
+    </div>
+
+  </div>
 
 
-   <script type="text/javascript" src="scripts/songs-data.json"></script>
-   <script type="text/javascript" src="scripts/microscale.js"></script>
+  <script type="text/javascript" src="scripts/songs-data.json"></script>
+  <script type="text/javascript" src="scripts/microscale.js"></script>
 </body>
 </html>
