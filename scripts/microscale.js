@@ -170,51 +170,28 @@ $(function() {
 	/////////////////////////////////////////////////////////////////
 	// Downloads new text from wikipedia and reloads buffer content
 	/////////////////////////////////////////////////////////////////
-  Buffer.prototype.update = function() {
+  Buffer.prototype.update = function(textContent) {
     var self = this;
     var buffNum = parseInt(this.id.slice(-1)) - 1;
 
-    // showing loading indicator
-    $("#load-indic-buf-"+(buffNum+1)).show();
-		$("#load-indic-div-"+(buffNum+1)).css("z-index", 150);
+    // loading text into buffer
+    $(self.id).html(textContent).promise().done(function() {
 
-		$.getJSON('http://whateverorigin.org/get?url=' +
-		encodeURIComponent('https://en.wikipedia.org/wiki/Special:Random') + '&callback=?',
-		function (data) {
-			// data editing
-			var str = "";
-			// remove all the imgs from data to prevent 404 on using the data
-			// with jquery
-			var htmlStr = data.contents.replace(/<\/?img.*>/gm, '');
-			$(htmlStr).find("#mw-content-text p").each(function() {
-				str += "<p>"+$(this).text()+"</p>";
-			});
+      self.size = $(self.id).text().length;
+      self.position = 0;
+      self.currentParagraphIndex = 0;
+      self.previousParagraphLength = 0;
+      self.lastParagraphNumber = 0;
 
-			// check if new text length is not less than 100 characters
-			if (str.length < 100) {
-				self.update();
-				return;
-			}
+      self.content = $(self.id).text();
 
-			// loading text into buffer
-			$(self.id).html(str).promise().done(function() {
+      // here hidding loading indicator
+      $("#load-indic-buf-"+(buffNum+1)).hide();
+      $("#load-indic-div-"+(buffNum+1)).css("z-index", -150);
 
-				self.size = $(self.id).text().length;
-				self.position = 0;
-				self.currentParagraphIndex = 0;
-				self.previousParagraphLength = 0;
-				self.lastParagraphNumber = 0;
-
-				self.content = $(self.id).text();
-
-				// here hidding loading indicator
-				$("#load-indic-buf-"+(buffNum+1)).hide();
-				$("#load-indic-div-"+(buffNum+1)).css("z-index", -150);
-
-				self.updateMatchings();
-			});
-		});
-	};
+      self.updateMatchings();
+    });
+  };
 
 	////////////////////////////////////////
 	/*-------------- Player --------------*/
@@ -227,9 +204,17 @@ $(function() {
 		}
 	};
 
+  //
+  // Pause
+  //
+
 	Player.pause = function() {
 		Tone.Transport.pause();
 	};
+
+  //
+  // Rewind
+  //
 
 	Player.rewind = function() {
 		Tone.Transport.position = "0:0:0";
@@ -252,6 +237,10 @@ $(function() {
 		}
 	};
 
+  //
+  // on player did finished playing track
+  //
+
 	Player.didFinishedPlayingTrack = function() {
 		Player.trackNumber = Player.trackNumber > (numberOfTracks-1) ? 1 : ++Player.trackNumber ;
 		var strTrNum = ""+Player.trackNumber;
@@ -262,6 +251,10 @@ $(function() {
 		$("#tracklist").children("li").removeClass("current-track");
 		$("#tracklist li:nth-child("+strTrNum+")").addClass("current-track");
 	};
+  
+  //
+  // on buffer did change position
+  //
 	
 	Player.onBufferDidChangePosition = function(buf) {
 		var highlightStr = buf.map[buf.position];
@@ -296,6 +289,10 @@ $(function() {
 			this.sampler.start(this.data[buf.id].initialSampleID);
 		}
 	};
+
+  //
+  // update scheduler
+  //
 	
 	/// Cancel all previously scheduled events and schedule new
 	Player.updateScheduler = function() {
@@ -310,12 +307,50 @@ $(function() {
 		});
 	};
 	
+
+  //
+  // Fetch articles
+	// downloads new texts from wikipedia and reloads buffer content
+	//
+  Player.updateBuffers = function() {
+    var self = this;
+    // var buffNum = parseInt(this.id.slice(-1)) - 1;
+// 
+    // // showing loading indicator
+    // $("#load-indic-buf-"+(buffNum+1)).show();
+		// $("#load-indic-div-"+(buffNum+1)).css("z-index", 150);
+
+
+    // здесь нужно выполнять запрос с официальным API
+    // то есть нужно переписать, какой API использовать
+    // напишу в заметках по этому проект
+
+		$.getJSON('https://en.wikipedia.org/w/api.php?action=query&generator=random&grnnamespace=0&prop=extracts&exchars=1000&grnlimit=6&exlimit=6&exintro&format=json&callback=?',
+		function (data) {
+			// data editing
+      // var obj = JSON.parse(data);
+			// var str = "";
+			// // remove all the imgs from data to prevent 404 on using the data
+			// // with jquery
+			// var htmlStr = data.contents.replace(/<\/?img.*>/gm, '');
+			// $(htmlStr).find("#mw-content-text p").each(function() {
+				// str += "<p>"+$(this).text()+"</p>";
+			// });
+// 
+      // здесь обновляем буферы
+      // console.log(data.query.pages);
+      var n = 0;
+      for (var page in data.query.pages) {
+        var content = data.query.pages[page].extract;
+        Player.buffers[n++].update(content);
+      }
+		});
+
+  };
+
 	Player.willPlayTrack = function(track, buffersLoadingCallback) {
 		// Update buffers
-		Player.buffers.forEach(function(buf) {
-			buf.update();
-			buf.isPlayed = false;
-		});
+    Player.updateBuffers();
 
 		// Update expression
 		var expr = trackData[track-1].expression;
@@ -433,13 +468,13 @@ $(function() {
 	//-----------------
 
 	// buffers
-	for (var i = 0; i < 6; i++) {
-		var newID = "#buffer-"+(i+1);
-		var newOverlayID = "#buffer-overlay-"+(i+1);
-		Player.buffers[i] = new Buffer(newID, newOverlayID);
-		Player.buffers[i].size = $(Player.buffers[i].id).text().length;
-		Player.buffers[i].update();
-	}
+  for (var i = 0; i < 6; i++) {
+    var newID = "#buffer-"+(i+1);
+    var newOverlayID = "#buffer-overlay-"+(i+1);
+    Player.buffers[i] = new Buffer(newID, newOverlayID);
+    Player.buffers[i].size = $(Player.buffers[i].id).text().length;
+  }
+  Player.updateBuffers();
 
 	// set track to first
 	Player.willPlayTrack("1", function(){});
