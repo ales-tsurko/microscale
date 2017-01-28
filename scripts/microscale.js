@@ -329,6 +329,8 @@ $(function() {
         var content = data.query.pages[page].extract;
         // удаляем все теги, кроме <p></p>
         var str = content.replace(/(<((?!(p|\/p))[^>]+)>)/ig, '');
+        // удаляем 3 последних символа ("...")
+        str = str.slice(0,-3);
         Player.buffers[n++].update(str);
       }
 		});
