@@ -2,6 +2,7 @@ $(function() {
 	var samplesFormat = Tone.Buffer.supportsType("mp3") ? "mp3" : "ogg";
 	var trackData = JSON.parse(data);
 	var numberOfTracks = 4;
+  var numberOfBuffers = 6;
 	
 	// Player responsible for loading a track data and playing events.
 	var Player = {};
@@ -185,7 +186,7 @@ $(function() {
 
       self.content = $(self.id).text();
 
-      // here hidding loading indicator
+      // hidding loading indicator
       $("#load-indic-buf-"+(buffNum+1)).hide();
       $("#load-indic-div-"+(buffNum+1)).css("z-index", -150);
 
@@ -314,35 +315,21 @@ $(function() {
 	//
   Player.updateBuffers = function() {
     var self = this;
-    // var buffNum = parseInt(this.id.slice(-1)) - 1;
-// 
-    // // showing loading indicator
-    // $("#load-indic-buf-"+(buffNum+1)).show();
-		// $("#load-indic-div-"+(buffNum+1)).css("z-index", 150);
-
-
-    // здесь нужно выполнять запрос с официальным API
-    // то есть нужно переписать, какой API использовать
-    // напишу в заметках по этому проект
+    // showing loading indicator
+    for (var n = 1; n < numberOfBuffers + 1; n++) {
+      $("#load-indic-buf-"+(n)).show();
+      $("#load-indic-div-"+(n)).css("z-index", 150);
+    }
 
 		$.getJSON('https://en.wikipedia.org/w/api.php?action=query&generator=random&grnnamespace=0&prop=extracts&exchars=1000&grnlimit=6&exlimit=6&exintro&format=json&callback=?',
 		function (data) {
-			// data editing
-      // var obj = JSON.parse(data);
-			// var str = "";
-			// // remove all the imgs from data to prevent 404 on using the data
-			// // with jquery
-			// var htmlStr = data.contents.replace(/<\/?img.*>/gm, '');
-			// $(htmlStr).find("#mw-content-text p").each(function() {
-				// str += "<p>"+$(this).text()+"</p>";
-			// });
-// 
       // здесь обновляем буферы
-      // console.log(data.query.pages);
       var n = 0;
       for (var page in data.query.pages) {
         var content = data.query.pages[page].extract;
-        Player.buffers[n++].update(content);
+        // удаляем все теги, кроме <p></p>
+        var str = content.replace(/(<((?!(p|\/p))[^>]+)>)/ig, '');
+        Player.buffers[n++].update(str);
       }
 		});
 
@@ -468,7 +455,7 @@ $(function() {
 	//-----------------
 
 	// buffers
-  for (var i = 0; i < 6; i++) {
+  for (var i = 0; i < numberOfBuffers; i++) {
     var newID = "#buffer-"+(i+1);
     var newOverlayID = "#buffer-overlay-"+(i+1);
     Player.buffers[i] = new Buffer(newID, newOverlayID);
