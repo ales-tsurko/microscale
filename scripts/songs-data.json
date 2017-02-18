@@ -2,37 +2,37 @@ data = '[{"tempo": 59, "expression": "[grusha]",' +
 	'"#buffer-1" : {'+
 		'"event" : {},'+
 		'"isLoop" : false,'+
-		'"eventLength" : "1m",'+
+		'"eventLength" : "1m + 2n",'+
 		'"shouldPauseEventOnMatch" : false'+
 	'},'+
 	'"#buffer-2" : {'+
 		'"event" : {},'+
 		'"isLoop" : false,'+
-		'"eventLength" : "1m",'+
+		'"eventLength" : "1m + 2n",'+
 		'"shouldPauseEventOnMatch" : false'+
 	'},'+
 	'"#buffer-3" : {'+
 		'"event" : {},'+
 		'"isLoop" : false,'+
-		'"eventLength" : "1m",'+
+		'"eventLength" : "1m + 2n",'+
 		'"shouldPauseEventOnMatch" : false'+
 	'},'+
 	'"#buffer-4" : {'+
 		'"event" : {},'+
 		'"isLoop" : false,'+
-		'"eventLength" : "1m",'+
+		'"eventLength" : "1m + 2n",'+
 		'"shouldPauseEventOnMatch" : false'+
 	'},'+
 	'"#buffer-5" : {'+
 		'"event" : {},'+
 		'"isLoop" : false,'+
-		'"eventLength" : "1m",'+
+		'"eventLength" : "1m + 2n",'+
 		'"shouldPauseEventOnMatch" : false'+
 	'},'+
 	'"#buffer-6" : {'+
 		'"event" : {},'+
 		'"isLoop" : false,'+
-		'"eventLength" : "1m",'+
+		'"eventLength" : "1m + 2n",'+
 		'"shouldPauseEventOnMatch" : false'+
 	'},'+
 
