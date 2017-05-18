@@ -314,7 +314,7 @@ body {
 	font-family: 'microscale-menlo';
 	color: white;
 	font-size: 11px;
-	line-height: normal;
+	line-height: 14px;
 	border-style: solid;
 	border-color: black;
 	border-width: 20px;
@@ -329,7 +329,7 @@ body {
 	font-family: 'microscale-menlo';
 	color: white;
 	font-size: 11px;
-	line-height: normal;
+	line-height: 14px;
 }
 
 #wtf-info-container a:hover {
