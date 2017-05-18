@@ -335,3 +335,12 @@ body {
 #wtf-info-container a:hover {
 	text-decoration: none;
 }
+
+.bottom-link {
+  float: right;
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+  margin-right: 14px;
+  margin-top: 10px;
+}

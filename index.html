@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <meta charset="utf-8"/>
-   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-
-   <meta name="description" content="microscale is an album from random Wikipedia articles, written by Ales Tsurko" />
-
-   <meta property="og:title" content="microscale" />
-   <meta property="og:url" content="http://alestsurko.by/microscale" />
-
-   <title>microscale</title>
-   <link rel="shortcut icon" href="img/favicon.ico" />
+  <!-- COMMON TAGS -->
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>microscale</title>
+  <!-- Search Engine -->
+  <meta name="description" content="Generated in real-time from random Wikipedia articles, microscale is a web-based, generative album.">
+  <meta name="image" content="img/screen-shot.png">
+  <meta name="robots" content="index" />
+  <meta name="keywords" content="generative,album,music,experimental,electronic,ambient,idm,js,javascript,realtime,minsk" />
+  <meta name="author" content="Ales Tsurko" />
+  <!-- Schema.org for Google -->
+  <meta itemprop="name" content="microscale">
+  <meta itemprop="description" content="Generated in real-time from random Wikipedia articles, microscale is a web-based, generative album.">
+  <meta itemprop="image" content="img/screen-shot.png">
+  <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+  <meta name="og:title" content="microscale">
+  <meta name="og:description" content="Generated in real-time from random Wikipedia articles, microscale is a web-based, generative album.">
+  <meta name="og:image" content="img/screen-shot.png">
+  <meta name="og:url" content="http://alestsurko.by/microscale">
+  <meta name="og:site_name" content="microscale">
+  <meta name="fb:admins" content="1762191827">
+  <meta name="og:type" content="website">
+  <link rel="shortcut icon" href="img/favicon.ico" />
 
    <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
-   <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
    <script type="text/javascript" src="scripts/Tone.min.js"></script>
 </head>
 <body>
@@ -75,19 +88,50 @@
       <div style="display:inline-block;position:absolute;width:100%;bottom:7%;text-align:center;font-size:10px;z-index:50">
         <a style="text-decoration:none;" href="http://alestsurko.by" target="_blank"><span style="margin-right:1%;color:white;background-color:black;">&nbsp;&copy; 2016 Ales Tsurko&nbsp;</span></a>
       </div>
-        <a href="#" style="margin-right:27px;float:right;font-size:27px;color:black;text-decoration:none"><span style="margin-right:1%;" onclick="notsosecretmessage()">42</span></a>
-        <script>
+      <a href="#" style="margin-right:27px;float:right;font-size:27px;color:black;text-decoration:none"><span style="margin-right:1%;" onclick="notsosecretmessage()">42</span></a>
+      <script>
 function notsosecretmessage() {
   var answer = prompt("Назови число");
-  if (answer.toLowerCase() == "27") {
-    alert("Я обнаружил, что все случайно. То есть все не так, как я думал раньше. Но это тоже неплохо. Например, из этой случайности независимо могут образовываться новые единые цельные структуры (ты увидишь это прямо здесь, когда закончишь с этим сообщением). Причем неважно, что это было раньше. Оно просто как хранитель информации, который можно разбить на мелкие кусочки и собрать из этого нечто совершенно новое. Не единицы создают эту информацию в отдельности, а элементы объединяясь. И сложно различить в действии: целое -- информация; или процесс объединения -- информация. Хаос также означает, что отвечаем за выбор мы, а не какие-то происки судьбы... (Хотя для меня это все еще спорный вопрос, потому что я до сих пор не могу понять, где начинаюсь я и сколько этого Я делает осознанный выбор. Возможно, мне просто кажется, что я что-то выбираю...) Все это движимо одним телом и судьбой управляет в большей степени оно изнутри (то есть структура нашего сознания, а не природные явления). Есть некий маяк, на свет которого летишь и думать \"зачем я выбираю это?\" -- безуспешная попытка защитить себя от возможных неудач. Сам свет маяка настолько манящий и настолько привычный, что даже при всех рациональных объяснениях \"зачем?\" выбор не может сбивать с пути к этому свету и даже при отклонении, через какое-то время обнаруживаешь, что ты снова летишь туда. Поэтому эти все ответы -- война с самим собой -- честно можно выбрать только чувствами. Это просто прямой путь или извилистый (полагаться на чувства или спрашивать \"зачем?\", \"почему?\" и \"как?\" -- только кажующиеся альтернативы). Твое Я все-равно рулит к свету.");
-  } 
+  if (answer == "27") {
+  alert("Я обнаружил, что все случайно. То есть все не так, как я думал раньше. Но это тоже неплохо. Например, из этой случайности независимо могут образовываться новые единые цельные структуры (ты увидишь это прямо здесь, когда закончишь с этим сообщением). Причем неважно, что это было раньше. Оно просто как хранитель информации, который можно разбить на мелкие кусочки и собрать из этого нечто совершенно новое. Не единицы создают эту информацию в отдельности, а элементы объединяясь. И сложно различить в действии: целое -- информация; или процесс объединения -- информация. Хаос также означает, что отвечаем за выбор мы, а не какие-то происки судьбы... (Хотя для меня это все еще спорный вопрос, потому что я до сих пор не могу понять, где начинаюсь я и сколько этого Я делает осознанный выбор. Возможно, мне просто кажется, что я что-то выбираю...) Все это движимо одним телом и судьбой управляет в большей степени оно изнутри (то есть структура нашего сознания, а не природные явления). Есть некий маяк, на свет которого летишь и думать \"зачем я выбираю это?\" -- безуспешная попытка защитить себя от возможных неудач. Сам свет маяка настолько манящий и настолько привычный, что даже при всех рациональных объяснениях \"зачем?\" выбор не может сбивать с пути к этому свету и даже при отклонении, через какое-то время обнаруживаешь, что ты снова летишь туда. Поэтому эти все ответы -- война с самим собой -- честно можно выбрать только чувствами. Это просто прямой путь или извилистый (полагаться на чувства или спрашивать \"зачем?\", \"почему?\" и \"как?\" -- только кажующиеся альтернативы). Твое Я все-равно рулит к свету.");
+} 
 }
-        </script>
+      </script>
+      <a class="bottom-link" href="https://preservedsound.bandcamp.com/album/microscale" target="blank">CD/Digital</a>
+ <span id="wtf-open-button" style="margin-right:1%;color:white;background-color:#3CDE00;cursor: pointer">&nbsp;wtf?&nbsp;</span>
     </div>
 
   </div>
 
+   <!-- wtf? view -->
+   <div id="wtf-container" style="display:none">
+      <div id="wtf-close-button" style="display:block; position:absolute; margin-left:1%; font-size:40px; top:0.5%; cursor:pointer;">&times;</div>
+      <div id="wtf-info-container">
+         <div style="background-color:#3CDE00;border-color:#3CDE00">
+Generated in real-time from random Wikipedia articles, microscale is a web-based, generative album, and available as a rendered physical CDR and digital download. Each article functions a step sequencer – where the letters are the sequencer steps and the track titles are regular expressions that switch the steps on and off. The web version is generated in real-time and is also hackable – the regular expressions, samples, tempo and other parameters can be edited or replaced – enabling microscale to be used as an instrument and sequencer for the listener’s own music.
+         </div>
+         <div style="background-color:black;border-color:black"></div>
+         <div style="border-color:white"></div>
+         <div style="background-color:#F800B4;border-color:#F800B4;display:inline-block">
+The concept behind microscale is to show that through transforming one media (text) into another media (music), the meaning can be transformed – the article has its own meaning, but the music generated from the article has a completely different meaning.
+<br>
+<br>
+The source code is <a href="https://github.com/AlesTsurko/microscale" target="_blank">available</a>. As well as the <a href="https://preservedsound.bandcamp.com/album/microscale" target="_blank">physical version</a> as individually rendered CDRs with every disc totally unique.
+         </div>
+      </div>
+   </div>
+
+   <!-- show/hide wtf? view -->
+   <script type="text/javascript">
+   $("#wtf-open-button").click(function() {
+      $("#wtf-container").fadeToggle(1000);
+      $("#main-container").fadeToggle(1000);
+   })
+   $("#wtf-close-button").click(function() {
+      $("#wtf-container").fadeToggle(1000);
+      $("#main-container").fadeToggle(1000);
+   })
+   </script>
 
   <script type="text/javascript" src="scripts/songs-data.json"></script>
   <script type="text/javascript" src="scripts/microscale.js"></script>
