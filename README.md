@@ -5,3 +5,11 @@ The concept behind **microscale** is to show that through transforming one media
 
 
 **microscale** is available from http://alestsurko.by/microscale/. The physical version is available as individually rendered CDRs with every disc totally unique.
+
+---
+I spend too much time for open source, but too little for commercial stuff. As
+the result I always lack money. If you like some of my projects, or music, or
+some of my contributions helped you, please consider donation.
+
+- Bitcoin: **bc1q0p7tmxyyd0pn7qsfxwlm00ncazdzz24p8lagqp**
+- Ethereum: **0x55B6805f462e19aaBdB304bc85F94099eac060CE**
